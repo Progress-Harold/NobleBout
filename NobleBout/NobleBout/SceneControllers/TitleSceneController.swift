@@ -26,16 +26,11 @@ class TitleSceneController: SKScene {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("User Tapped Screen")
-        //  TODO: - TODO add transtion to select screen https://noblesword.atlassian.net/browse/NB2-8
-        /*
-         Guard let scene = SelectSceneController(fileNamed: "SelectScene”)  else {
-                     return
-                 }
-                 
-                 scene.scaleMode = .aspectFill
-                 self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
-         */
+        guard let scene = SelectScreen(fileNamed: "SelectScreen")  else {
+            return
+        }
+        scene.scaleMode = .aspectFill
+        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
     }
-    
+        
 }
