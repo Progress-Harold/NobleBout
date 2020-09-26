@@ -26,11 +26,11 @@ class TitleSceneController: SKScene {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let scene = SelectScreen(fileNamed: "SelectScreen")  else {
+        
+        guard let scene = SelectScreenController(fileNamed: "SelectScreen")  else {
             return
         }
         scene.scaleMode = .aspectFill
         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
     }
-        
 }

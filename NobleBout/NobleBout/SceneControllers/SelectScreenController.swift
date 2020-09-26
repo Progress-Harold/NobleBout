@@ -1,17 +1,16 @@
 //
-//  SelectScreen.swift
+//  SelectScreenController.swift
 //  NobleBout
 //
-//  Created by Anthony Torres on 9/17/20.
+//  Created by Anthony Torres on 9/25/20.
 //  Copyright © 2020 EightFoldGames. All rights reserved.
 //
 
 import SpriteKit
 
-class SelectScreen: SKScene {
+class SelectScreenController: SKScene {
     
     override func sceneDidLoad() {
         super.sceneDidLoad()
     }
-    
 }
