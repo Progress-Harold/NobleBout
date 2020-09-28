@@ -12,6 +12,8 @@
 		8E0C9AA32510120300EA3C78 /* TitleFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E0C9AA12510120300EA3C78 /* TitleFire.sks */; };
 		8E0C9AA42510120300EA3C78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E0C9AA22510120300EA3C78 /* Assets.xcassets */; };
 		8EB7021B25101B3500CC0EB6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB7021A25101B3500CC0EB6 /* Utilities.swift */; };
+		8EB879AE251EC1E50079CE3C /* SelectScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB879AD251EC1E50079CE3C /* SelectScreenController.swift */; };
+		8ED437C825141086002B6786 /* SelectScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8ED437C725141086002B6786 /* SelectScreen.sks */; };
 		A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB76250EDDE20021502C /* AppDelegate.swift */; };
 		A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB7E250EDDE20021502C /* GameViewController.swift */; };
 		A2A9BB82250EDDE20021502C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A9BB80250EDDE20021502C /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 		8E0C9AA12510120300EA3C78 /* TitleFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleFire.sks; sourceTree = "<group>"; };
 		8E0C9AA22510120300EA3C78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EB7021A25101B3500CC0EB6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		8EB879AD251EC1E50079CE3C /* SelectScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectScreenController.swift; sourceTree = "<group>"; };
+		8ED437C725141086002B6786 /* SelectScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectScreen.sks; sourceTree = "<group>"; };
 		A2A9BB73250EDDE20021502C /* NobleBout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NobleBout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A9BB76250EDDE20021502C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2A9BB7E250EDDE20021502C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0C9A9E251000EA00EA3C78 /* TitleSceneController.swift */,
+				8EB879AD251EC1E50079CE3C /* SelectScreenController.swift */,
 			);
 			path = SceneControllers;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0C9A9C2510007900EA3C78 /* TitleScene.sks */,
+				8ED437C725141086002B6786 /* SelectScreen.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 			files = (
 				8E0C9AA32510120300EA3C78 /* TitleFire.sks in Resources */,
 				A2A9BB82250EDDE20021502C /* Main.storyboard in Resources */,
+				8ED437C825141086002B6786 /* SelectScreen.sks in Resources */,
 				8E0C9A9D2510007900EA3C78 /* TitleScene.sks in Resources */,
 				A2A9BB84250EDDE50021502C /* Assets.xcassets in Resources */,
 				8E0C9AA42510120300EA3C78 /* Assets.xcassets in Resources */,
@@ -341,6 +348,7 @@
 				A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */,
 				A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */,
 				8EB7021B25101B3500CC0EB6 /* Utilities.swift in Sources */,
+				8EB879AE251EC1E50079CE3C /* SelectScreenController.swift in Sources */,
 				8E0C9A9F251000EA00EA3C78 /* TitleSceneController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
