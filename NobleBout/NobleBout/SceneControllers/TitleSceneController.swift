@@ -16,7 +16,7 @@ class TitleSceneController: SKScene {
     override func sceneDidLoad() {
         super.sceneDidLoad()
         
-        titleEmmiter = getParticles(name: "TitleFire")
+        titleEmmiter = getParticles(name: "Flames")
         
         if let emmiter = self.childNode(withName: "TitleParticles") as? SKEmitterNode {
             titleEmmiter.position = emmiter.position
