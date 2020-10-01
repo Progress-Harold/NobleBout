@@ -1,5 +1,5 @@
 # NobleBout
-Noble Bout is a rock Paper Scissors based fighting game
+Noble Bout is a Rock, Paper, Scissors based fighting game.
 
 ### For code changes:
 (For full details on this see our [Engineering Docs](https://noblesword.atlassian.net/wiki/spaces/NO/pages/2228225/Engineering+Guidelines#3.-Create-a-new-branch.).
