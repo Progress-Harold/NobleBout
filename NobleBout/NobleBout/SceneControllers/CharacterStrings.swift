@@ -10,9 +10,9 @@ import Foundation
 
 
 // rs means raw short
-// let rsMasa: String
 
 let rsCharStr: [String] = [rsMasa,rsTetsu,rsEris,rsFragarach,rsGiff,rsAbziu]
+
 let rsMasa: String = "masa"
 let rsTetsu: String = "tetsu"
 let rsEris: String = "eris"
