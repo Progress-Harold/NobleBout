@@ -11,6 +11,7 @@ import SpriteKit
 class SelectScreenController: SKScene {
     
     var charArray: [SKSpriteNode] = []
+    var charPlaceholderSprite: SKSpriteNode = SKSpriteNode()
     
     // MARK: - Scene Life Cycle
     
@@ -18,10 +19,19 @@ class SelectScreenController: SKScene {
         super.sceneDidLoad()
         
         getCharButtons()
+        setupUI()
     }
     
     
     // MARK: - Setup Functions
+    
+    func setupUI() {
+        guard let cam = camera else { return }
+        
+        if let placeholder = cam.childNode(withName: charPlaceholder) as? SKSpriteNode {
+            charPlaceholderSprite = placeholder
+        }
+    }
     
     func getCharButtons() {
         guard let camChildren = camera?.children else { return }
@@ -45,7 +55,7 @@ class SelectScreenController: SKScene {
             for character in charArray {
                 if character.contains(location) {
                     if let name = character.name {
-                        print("\(name)")
+                        charPlaceholderSprite.texture = SKTexture(imageNamed: name.convertName())
                     }
                 }
             }

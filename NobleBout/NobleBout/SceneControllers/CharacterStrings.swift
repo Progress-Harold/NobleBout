@@ -11,11 +11,11 @@ import Foundation
 
 // rs means raw short
 
-let rsCharStr: [String] = [rsMasa,rsTetsu,rsEris,rsFragarach,rsGiff,rsAbziu]
+let rsCharStr: [String] = [rsMasa,rsTetsu,rsEris,rsFragarach,rsGriff,rsAbziu]
 
 let rsMasa: String = "masa"
 let rsTetsu: String = "tetsu"
 let rsEris: String = "eris"
 let rsFragarach: String = "fragarach"
-let rsGiff: String = "giff"
+let rsGriff: String = "griff"
 let rsAbziu: String = "abziu"

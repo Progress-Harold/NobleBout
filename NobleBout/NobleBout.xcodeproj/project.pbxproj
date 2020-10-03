@@ -13,6 +13,8 @@
 		8EB7021B25101B3500CC0EB6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB7021A25101B3500CC0EB6 /* Utilities.swift */; };
 		8EB879AE251EC1E50079CE3C /* SelectScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB879AD251EC1E50079CE3C /* SelectScreenController.swift */; };
 		8EB879B0252296480079CE3C /* CharacterStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB879AF252296480079CE3C /* CharacterStrings.swift */; };
+		8EB879B22527F9240079CE3C /* UIStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB879B12527F9240079CE3C /* UIStrings.swift */; };
+		8EB879B5252808E60079CE3C /* Ex+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB879B4252808E60079CE3C /* Ex+String.swift */; };
 		8ED437C825141086002B6786 /* SelectScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8ED437C725141086002B6786 /* SelectScreen.sks */; };
 		A208DD1E2525B6580029D5C7 /* Flames.sks in Resources */ = {isa = PBXBuildFile; fileRef = A208DD1D2525B6580029D5C7 /* Flames.sks */; };
 		A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB76250EDDE20021502C /* AppDelegate.swift */; };
@@ -48,6 +50,8 @@
 		8EB7021A25101B3500CC0EB6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		8EB879AD251EC1E50079CE3C /* SelectScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectScreenController.swift; sourceTree = "<group>"; };
 		8EB879AF252296480079CE3C /* CharacterStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CharacterStrings.swift; path = NobleBout/SceneControllers/CharacterStrings.swift; sourceTree = SOURCE_ROOT; };
+		8EB879B12527F9240079CE3C /* UIStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIStrings.swift; path = NobleBout/SceneControllers/UIStrings.swift; sourceTree = SOURCE_ROOT; };
+		8EB879B4252808E60079CE3C /* Ex+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+String.swift"; sourceTree = "<group>"; };
 		8ED437C725141086002B6786 /* SelectScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectScreen.sks; sourceTree = "<group>"; };
 		A208DD1D2525B6580029D5C7 /* Flames.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Flames.sks; sourceTree = "<group>"; };
 		A2A9BB73250EDDE20021502C /* NobleBout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NobleBout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +103,14 @@
 			path = Effects;
 			sourceTree = "<group>";
 		};
+		8EB879B3252808A20079CE3C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8EB879B4252808E60079CE3C /* Ex+String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A2A9BB6A250EDDE20021502C = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +138,7 @@
 				A2A9BBAC250FD7410021502C /* Scenes */,
 				A2A9BBAB250FD72E0021502C /* SceneControllers */,
 				A2A9BBAF250FD7770021502C /* UI Structures */,
+				8EB879B3252808A20079CE3C /* Extensions */,
 				A2A9BBB0250FD80E0021502C /* Constants */,
 				A2A9BBAD250FD74A0021502C /* Animations */,
 				8E0C9AA0251011A000EA3C78 /* Effects */,
@@ -209,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				8EB879AF252296480079CE3C /* CharacterStrings.swift */,
+				8EB879B12527F9240079CE3C /* UIStrings.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -349,7 +363,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EB879B0252296480079CE3C /* CharacterStrings.swift in Sources */,
+				8EB879B5252808E60079CE3C /* Ex+String.swift in Sources */,
 				A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */,
+				8EB879B22527F9240079CE3C /* UIStrings.swift in Sources */,
 				A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */,
 				8EB7021B25101B3500CC0EB6 /* Utilities.swift in Sources */,
 				8EB879AE251EC1E50079CE3C /* SelectScreenController.swift in Sources */,
