@@ -11,7 +11,11 @@ import SpriteKit
 class SelectScreenController: SKScene {
     
     var charArray: [SKSpriteNode] = []
+    // UI Properties
     var charPlaceholderSprite: SKSpriteNode = SKSpriteNode()
+    var selectButton: SKSpriteNode = SKSpriteNode()
+    
+    var lastCharSelected: String = rsMasa.convertName()
     
     // MARK: - Scene Life Cycle
     
@@ -28,8 +32,12 @@ class SelectScreenController: SKScene {
     func setupUI() {
         guard let cam = camera else { return }
         
-        if let placeholder = cam.childNode(withName: charPlaceholder) as? SKSpriteNode {
+        if let placeholder = cam.childNode(withName: charPlaceholderStr) as? SKSpriteNode {
             charPlaceholderSprite = placeholder
+        }
+        
+        if let selectBtn = cam.childNode(withName: selectBtnStr) as? SKSpriteNode {
+            selectButton = selectBtn
         }
     }
     
@@ -52,10 +60,16 @@ class SelectScreenController: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             
+            if selectButton.contains(location) {
+                print(lastCharSelected)
+            }
+            
+            // Detecting a selected character
             for character in charArray {
                 if character.contains(location) {
                     if let name = character.name {
                         charPlaceholderSprite.texture = SKTexture(imageNamed: name.convertName())
+                        lastCharSelected = name.convertName()
                     }
                 }
             }

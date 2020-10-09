@@ -10,4 +10,5 @@ import Foundation
 
 // MARK: -
 
-let charPlaceholder: String = "charPlaceholder"
+let charPlaceholderStr: String = "charPlaceholder"
+let selectBtnStr: String = "selectBtn"
