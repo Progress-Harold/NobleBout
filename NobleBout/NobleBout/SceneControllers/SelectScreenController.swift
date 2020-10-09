@@ -32,14 +32,10 @@ class SelectScreenController: SKScene {
     func setupUI() {
         guard let cam = camera else { return }
         
-        if let placeholder = cam.childNode(withName: charPlaceholderStr) as? SKSpriteNode {
-            charPlaceholderSprite = placeholder
-        }
-        
-        if let selectBtn = cam.childNode(withName: selectBtnStr) as? SKSpriteNode {
-            selectButton = selectBtn
-        }
+        charPlaceholderSprite = cam.findNode(name: charPlaceholderStr)
+        selectButton = cam.findNode(name: selectBtnStr)
     }
+    
     
     func getCharButtons() {
         guard let camChildren = camera?.children else { return }
@@ -47,7 +43,7 @@ class SelectScreenController: SKScene {
         for node in camChildren {
             if rsCharStr.contains(node.name ?? "") {
                 if let cNode = node as? SKSpriteNode {
-                  charArray.append(cNode)
+                    charArray.append(cNode)
                 }
             }
         }
