@@ -207,6 +207,11 @@ class Bout {
         boutEnded.toggle()
     }
     
+    func reset() {
+        playerOne.refresh()
+        playerTwo.refresh()
+    }
+    
     private func testSetPlayers() {
         // set player properties
         playerOne = Player(.masa)
@@ -215,8 +220,7 @@ class Bout {
 }
 
 class Match {
-    var p1Win: Int = 0
-    var p2Win: Int = 0
+    var sk: ScoreKeeper
     
     var p1Choice: Choice?
     var p2Choice: Choice?
@@ -226,8 +230,9 @@ class Match {
     
     var currentBout: Bout
     
-    init(p1: Player, p2: Player) {
+    init(p1: Player, p2: Player, sk: ScoreKeeper) {
         currentBout = Bout(p1, p2)
+        self.sk = sk
     }
     
     
@@ -247,7 +252,13 @@ class Match {
         // - set matchEnded Bool to true
     }
     
-    private func end() {}
+    private func end() {
+        statusLabel.text = "GameOver"
+        matchEnded.toggle()
+    }
+    private func reset() {
+        currentBout.reset()
+    }
     func pause() {}
     
     func setBout(_ choice: Choice) {
@@ -264,24 +275,63 @@ class Match {
         
         if !currentBout.boutEnded {
             currentBout.play(c1, c2) { (shouldContinue) in
-                self.statusLabel.text = "\(self.presentWinner())"
+                
+                if let win = self.currentBout.winner {
+                    self.statusLabel.text = "\(win)"
+                }
 
                 if let shouldContinue = shouldContinue {
                     if !shouldContinue {
                         self.statusLabel.text = "Winner \(self.presentWinner())"
-                        self.matchEnded.toggle()
+                        
+                        if self.matchEnded {
+                            self.statusLabel.text = "Game Over"
+                        }
+                        else {
+                            print("Wins:\(self.sk.pOScore.0)")
+                            print("Wins:\(self.sk.pTScore.0)")
+                        }
                     }
                 }
             }
-        }
-        else {
-            matchEnded.toggle()
         }
     }
     
     private func presentWinner() -> Winner {
         self.statusLabel.text = message
-        return currentBout.winner ?? .draw
+        
+        let winner = currentBout.winner
+        
+        switch winner {
+        case .pOne:
+            if sk.pOScore.0 < 2 {
+                sk.pOScore.0 += 1
+                if sk.pOScore.0 < 2 {
+                    self.reset()
+                }
+                else {
+                    end()
+                }
+            }
+        case .pTwo:
+            if sk.pTScore.0 < 2 {
+                sk.pTScore.0 += 1
+                if sk.pTScore.0 < 2 {
+                    self.reset()
+                }
+                else {
+                    end()
+                }
+            }
+        case .draw:
+            break
+        case .none:
+            break
+        }
+        
+        sk.updateUI()
+        
+        return winner ?? .draw
     }
     
     func setStatusLable(_ lbl: SKLabelNode) {
@@ -289,6 +339,26 @@ class Match {
     }
 }
 
+
+class ScoreKeeper {
+    typealias Score = (Int, SKLabelNode)
+    
+    var pOScore: Score
+    var pTScore: Score
+    
+    init(_ p1: SKLabelNode, _ p2: SKLabelNode) {
+        self.pOScore.1 = p1
+        self.pTScore.1 = p2
+        
+        self.pOScore.0 = 0
+        self.pTScore.0 = 0
+    }
+    
+    func updateUI() {
+        pOScore.1.text = "Win:\(pOScore.0)"
+        pTScore.1.text = "Win:\(pTScore.0)"
+    }
+}
 
 
 //  let b = Bout()
