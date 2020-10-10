@@ -10,6 +10,19 @@
 import Foundation
 import SpriteKit
 
+/*
+* Logic Summery *
+ 
+ > Match - A match will run bouts until a player's score reaches
+    > Bouth - A bout will run indevidual janken rounds until a players hp is 0
+        > Janken
+                - A janken round is when a player one's choice of r,p, or s is placed against a random choice.
+                - The winner will take hp from the other
+ */
+
+
+// MARK: - Components
+
 // MARK: - Enums
 enum Winner: String {
     case pOne, pTwo, draw
@@ -17,53 +30,6 @@ enum Winner: String {
 enum Choice: String {
     case paper, rock, scissor
 }
-
-// Posible choices
-let choices: [Choice] = [.paper, .rock, .scissor]
-
-// Janken
-typealias JankenCombo = (Choice, Choice)
-func jankenKeyGen(_ combo: JankenCombo) -> String {
-    return "\(combo.0)V\(combo.1)"
-}
-
-// TODO: - Add constance
-let resultsDict: [String: Winner] = {
-    return [
-        // - Paper:
-        "paperVrock": .pOne,
-        "paperVscissor": .pTwo,
-        "paperVpaper": .draw,
-        // - Scissors:
-        "scissorVrock": .pTwo,
-        "scissorVpaper": .pOne,
-        "scissorVscissor": .draw,
-        // - Rock
-        "rockVscissor": .pOne,
-        "rockVpaper": .pTwo,
-        "rockVrock": .draw,
-    ]
-}()
-
-struct JankenRound {
-    let pOChoice: Choice
-    let pTChoice: Choice
-    
-    func winner() -> Winner {
-        guard (resultsDict[jankenKeyGen((pOChoice, pTChoice))] != nil) else {
-            print("\(jankenKeyGen((pOChoice, pTChoice))) is not in the dictionary.")
-            return .draw
-        }
-        
-        return resultsDict[jankenKeyGen((pOChoice, pTChoice))]!
-    }
-    
-    init(_ p1c:Choice, _ p2c: Choice) {
-        self.pOChoice = p1c
-        self.pTChoice = p2c
-    }
-}
-
 
 enum Buff {
     // Buffs
@@ -110,7 +76,42 @@ enum Hero: String {
         }
         return buffs
     }
+    
+    var roster: [Hero] {
+        switch self {
+        default:
+            return [.griff, .eris, .abziu, .tetsu]
+        }
+    }
 }
+
+
+// Posible choices
+let choices: [Choice] = [.paper, .rock, .scissor]
+
+// Janken Convenience
+typealias JankenCombo = (Choice, Choice)
+func jankenKeyGen(_ combo: JankenCombo) -> String {
+    return "\(combo.0)V\(combo.1)"
+}
+
+// TODO: - Add constance
+let resultsDict: [String: Winner] = {
+    return [
+        // - Paper:
+        "paperVrock": .pOne,
+        "paperVscissor": .pTwo,
+        "paperVpaper": .draw,
+        // - Scissors:
+        "scissorVrock": .pTwo,
+        "scissorVpaper": .pOne,
+        "scissorVscissor": .draw,
+        // - Rock
+        "rockVscissor": .pOne,
+        "rockVpaper": .pTwo,
+        "rockVrock": .draw,
+    ]
+}()
 
 
 class Player {
@@ -145,6 +146,30 @@ class Player {
     }
 }
 
+// MARK: - Match Flow Logic
+
+/// JankenRound
+struct JankenRound {
+    let pOChoice: Choice
+    let pTChoice: Choice
+    
+    func winner() -> Winner {
+        guard (resultsDict[jankenKeyGen((pOChoice, pTChoice))] != nil) else {
+            print("\(jankenKeyGen((pOChoice, pTChoice))) is not in the dictionary.")
+            return .draw
+        }
+        
+        return resultsDict[jankenKeyGen((pOChoice, pTChoice))]!
+    }
+    
+    init(_ p1c:Choice, _ p2c: Choice) {
+        self.pOChoice = p1c
+        self.pTChoice = p2c
+    }
+}
+
+
+/// Bout
 class Bout {
     var playerOne: Player!
     var playerTwo: Player!
@@ -219,6 +244,8 @@ class Bout {
     }
 }
 
+
+/// Match
 class Match {
     var sk: ScoreKeeper
     
@@ -241,7 +268,8 @@ class Match {
         statusLabel.text = choiceMsgStr
         
         NotificationCenter.default.addObserver(self, selector: #selector(playWithChoices), name: choiceMadeN, object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(reset), name: resetMatchN, object: nil)
+        
         // pick a random choice for Computer
         
         // use current bout to play a bout
@@ -256,8 +284,10 @@ class Match {
         statusLabel.text = gameOverStr
         matchEnded.toggle()
     }
-    private func reset() {
+    @objc private func reset() {
         currentBout.reset()
+        matchEnded.toggle()
+        statusLabel.text = choiceMsgStr
     }
     func pause() {}
     
@@ -359,12 +389,86 @@ class ScoreKeeper {
     }
 }
 
+class Node<Element> {
+    let value: Element
+    var next: Node?
+    
+    init(_ value: Element) {
+        self.value = value
+    }
+}
 
-//  let b = Bout()
-//  b.testGame()
-//  b.winner
-//  b.playerTwo.HP
+struct Stack<Element> {
+    private var top: Node<Element>?
+    
+    var isEmpty: Bool {
+        return (peek() == nil)
+    }
+    
+    init() { }
+    
+    init(_ elements: [Element]) {
+        for (i) in 0...elements.count - 1 {
+           push(elements[i])
+        }
+    }
+    
+    func peek() -> Element? {
+        return top?.value
+    }
+    
+    mutating func push(_ element: Element) {
+        let oldTop = top
+        top = Node(element)
+        top?.next = oldTop
+    }
+    
+    mutating func pop() -> Element? {
+        let currentTop: Node<Element>? = top
+        
+        top = top?.next
+        return currentTop?.value
+    }
+    
+    func mapForDescription(completion:([String])->([String])) -> [String] {
+        var currentTop = top
+        var values: [String] = []
+        
+        while currentTop?.next != nil {
+            values.append("\(currentTop!.value)")
+            currentTop = currentTop?.next
+        }
+        
+        values.append("\(currentTop!.value)")
+        
+        return completion(values)
+    }
+}
 
+
+class ArcadeController {
+    static var test_instance =  ArcadeController()
+    
+    private var chosenHero: Hero?
+    private var rosterStack = Stack<Hero>()
+    
+    
+    func selectCharacter(_ chosenHero: Hero) {
+        self.chosenHero = chosenHero
+        
+        rosterStack = Stack(chosenHero.roster)
+    }
+    
+    func upNext() -> Hero? {
+        guard let hero = chosenHero else {
+            print("No Hero was selected!")
+            return nil
+        }
+        
+        return rosterStack.pop()
+    }
+    
+}
 
 
 

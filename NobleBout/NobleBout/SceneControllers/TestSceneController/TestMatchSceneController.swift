@@ -15,13 +15,15 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     let p2Icon = "p2Icon"
     let hp1 = "hp1"
     let hp2 = "hp2"
-
+    let p1w = "p1Wins"
+    let p2w = "p2Wins"
+    
     let hType = "h"
     let eType = "e"
     let emptyStr = ""
 
     var protoNames: [String] {
-        return [p1Icon, p2Icon, hp1, hp2, rBtn, pBtn, sBtn, hDrink, eDrink, statusStrLble]
+        return [p1Icon, p2Icon, hp1, hp2, rBtnStr, pBtnStr, sBtnStr, hDrinkStr, eDrinkStr, statusLblStr, restartBtnStr]
     }
     
     // MARK: - Button and Lable Hash
@@ -38,8 +40,8 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     private var debugModeBtn: SKSpriteNode = SKSpriteNode()
     
     override func sceneDidLoad() {
-        guard let pow = childNode(withName: "p1Wins") as? SKLabelNode,
-              let ptw = childNode(withName: "p2Wins") as? SKLabelNode else {
+        guard let pow = childNode(withName: p1w) as? SKLabelNode,
+              let ptw = childNode(withName: p2w) as? SKLabelNode else {
             return
         }
         
@@ -92,6 +94,8 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     }
     
     
+    // MARK: - UI Methods
+    
     func navBackToTitle() {
         guard let scene = TitleSceneController(fileNamed: titleScreenStr)  else {
             return
@@ -116,13 +120,25 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
             choiceMade = false
         case .eDrink:
             choiceMade = false
+        case .refresh:
+            choiceMade = false
+            restart()
         }
         
         if !match.matchEnded, choiceMade {
             NotificationCenter.default.post(name: choiceMadeN, object: nil)
         }
     }
-  
+    
+    func restart() {        
+        guard let scene = TestMatchSceneController(fileNamed: testSceneStr)  else {
+            return
+        }
+        
+        scene.scaleMode = .aspectFill
+        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
+    }
+    
     
     // MARK: - Setup
     
@@ -130,6 +146,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
         for protoSprite in children {
             if protoNames.contains(protoSprite.name ?? emptyStr) {
                 if let protoSprite = protoSprite as? STBtn {
+                    print(protoSprite)
                     protoSprite.setType()
                     protoSprite.delegate = self
                     controlSprites[protoSprite.name ?? emptyStr] = protoSprite
@@ -140,7 +157,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
             }
         }
         
-        if let statusLbl = controlSprites[statusStrLble] as? SKLabelNode {
+        if let statusLbl = controlSprites[statusLblStr] as? SKLabelNode {
             match.setStatusLable(statusLbl)
         }
         
@@ -181,7 +198,7 @@ protocol TestButtonDelegate {
 }
 
 enum TButton {
-    case rock, paper, sissors, hDrink, eDrink
+    case rock, paper, sissors, hDrink, eDrink, refresh
 }
 
 /// SpriteNode Test Button
@@ -194,17 +211,20 @@ class STBtn: SKSpriteNode {
     func setType() {
         guard let name = name else { return }
         
-        if name == pBtn {
+        if name == pBtnStr {
             btnType = .paper
         }
-        else if name == sBtn {
+        else if name == sBtnStr {
             btnType = .sissors
         }
-        else if name == hDrink {
+        else if name == hDrinkStr {
             btnType = .hDrink
         }
-        else if name == eDrink {
+        else if name == eDrinkStr {
             btnType = .eDrink
+        }
+        else if name == restartBtnStr {
+            btnType = .refresh
         }
     }
     
