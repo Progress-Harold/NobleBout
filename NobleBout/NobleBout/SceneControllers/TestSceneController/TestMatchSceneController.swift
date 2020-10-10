@@ -8,14 +8,6 @@
 
 import SpriteKit
 
-let rBtn = "rBtn"
-let pBtn = "pBtn"
-let sBtn = "sBtn"
-let hDrink = "hDrinkBtn"
-let eDrink = "eDrinkBtn"
-let drink = "Drink"
-let statusStrLble = "status"
-
 class TestMatchSceneController: SKScene, TestButtonDelegate {
     
     // MARK: - Test Constance
@@ -43,18 +35,27 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     var hDrinksQuant: Int = 10
     var eDrinksQuant: Int = 10
     
+    private var debugModeBtn: SKSpriteNode = SKSpriteNode()
+    
     override func sceneDidLoad() {
-        match = Match(p1: Player(.masa), p2: Player(.tetsu))
+        guard let pow = childNode(withName: "p1Wins") as? SKLabelNode,
+              let ptw = childNode(withName: "p2Wins") as? SKLabelNode else {
+            return
+        }
+        
+        match = Match(p1: Player(.masa), p2: Player(.tetsu), sk: ScoreKeeper(pow, ptw))
         
         setupUI()
         
         playerOne = (match?.currentBout.playerOne)!
         playerTwo = (match?.currentBout.playerTwo)!
+        
+        startMatch()
     }
     
     override func update(_ currentTime: TimeInterval) {
         if match.matchEnded {
-            
+            print(gameOverStr)
         }
         else {
             if let hpLabel = controlSprites[hp1] as? SKLabelNode {
@@ -69,11 +70,21 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
+                        
+            for touch in touches {
+                let location = touch.location(in: self)
+                
+                if debugModeBtn.contains(location) {
+                    navBackToTitle()
+                }
+            }
             
             controlSprites.forEach { (k, v) in
-                if let sprite = v as? STBtn {
-                    if sprite.contains(location) {
-                        sprite.touchesEnded(touches, with: event)
+                if !match.matchEnded {
+                    if let sprite = v as? STBtn {
+                        if sprite.contains(location) {
+                            sprite.touchesEnded(touches, with: event)
+                        }
                     }
                 }
             }
@@ -81,7 +92,19 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     }
     
     
+    func navBackToTitle() {
+        guard let scene = TitleSceneController(fileNamed: titleScreenStr)  else {
+            return
+        }
+        
+        scene.scaleMode = .aspectFill
+        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
+    }
+    
+    
     func didTap(_ btn: TButton) {
+        var choiceMade = true
+        
         switch btn {
         case .rock:
             match.setBout(.rock)
@@ -90,13 +113,13 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
         case .sissors:
             match.setBout(.scissor)
         case .hDrink:
-            break
+            choiceMade = false
         case .eDrink:
-            break
+            choiceMade = false
         }
         
-        if !match.matchEnded {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "choiceMade"), object: nil)
+        if !match.matchEnded, choiceMade {
+            NotificationCenter.default.post(name: choiceMadeN, object: nil)
         }
     }
   
@@ -121,14 +144,16 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
             match.setStatusLable(statusLbl)
         }
         
+        if let dbgBtn = self.childNode(withName: titleNavBtnStr) as? SKSpriteNode {
+            debugModeBtn = dbgBtn
+        }
+        
         if let hpLabel = controlSprites[hp1] as? SKLabelNode {
             hpLabel.text = "HP1:\(playerOne.HP)"
         }
         if let hpLabel = controlSprites[hp2] as? SKLabelNode {
             hpLabel.text = "HP2:\(playerTwo.HP)"
         }
-        
-        startMatch()
     }
     
     // MARK: - Key Functionality
@@ -185,6 +210,9 @@ class STBtn: SKSpriteNode {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.didTap(btnType)
+        self.run(.resize(byWidth: 50, height: 50, duration: 0.2)) {
+            self.run(.resize(byWidth: -50, height: -50, duration: 0.2))
+        }
     }
 }
 

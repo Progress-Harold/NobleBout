@@ -18,16 +18,16 @@ enum Choice: String {
     case paper, rock, scissor
 }
 
-var message: String = ""
-
 // Posible choices
 let choices: [Choice] = [.paper, .rock, .scissor]
+
 // Janken
 typealias JankenCombo = (Choice, Choice)
 func jankenKeyGen(_ combo: JankenCombo) -> String {
     return "\(combo.0)V\(combo.1)"
 }
 
+// TODO: - Add constance
 let resultsDict: [String: Winner] = {
     return [
         // - Paper:
@@ -110,8 +110,8 @@ enum Hero: String {
         }
         return buffs
     }
-    
 }
+
 
 class Player {
     var HP: Int = 100
@@ -179,12 +179,12 @@ class Bout {
         switch j.winner() {
             case .pOne:
                 playerTwo.HP -= 10
-                message = "p2 hp decreased"
+                // "p2 hp decreased"
             case .pTwo:
                 playerOne.HP -= 10
-                message = "p2 hp decreased"
+                // "p2 hp decreased"
             case .draw:
-                message = "Draw"
+                // "Draw"
             break
         }
         
@@ -207,6 +207,11 @@ class Bout {
         boutEnded.toggle()
     }
     
+    func reset() {
+        playerOne.refresh()
+        playerTwo.refresh()
+    }
+    
     private func testSetPlayers() {
         // set player properties
         playerOne = Player(.masa)
@@ -215,8 +220,7 @@ class Bout {
 }
 
 class Match {
-    var p1Win: Int = 0
-    var p2Win: Int = 0
+    var sk: ScoreKeeper
     
     var p1Choice: Choice?
     var p2Choice: Choice?
@@ -226,16 +230,17 @@ class Match {
     
     var currentBout: Bout
     
-    init(p1: Player, p2: Player) {
+    init(p1: Player, p2: Player, sk: ScoreKeeper) {
         currentBout = Bout(p1, p2)
+        self.sk = sk
     }
     
     
     func start() {
         // prompt for choice
-        statusLabel.text = "Make a choice!"
+        statusLabel.text = choiceMsgStr
         
-        NotificationCenter.default.addObserver(self, selector: #selector(playWithChoices), name: NSNotification.Name(rawValue: "choiceMade"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playWithChoices), name: choiceMadeN, object: nil)
 
         // pick a random choice for Computer
         
@@ -247,7 +252,13 @@ class Match {
         // - set matchEnded Bool to true
     }
     
-    private func end() {}
+    private func end() {
+        statusLabel.text = gameOverStr
+        matchEnded.toggle()
+    }
+    private func reset() {
+        currentBout.reset()
+    }
     func pause() {}
     
     func setBout(_ choice: Choice) {
@@ -264,24 +275,62 @@ class Match {
         
         if !currentBout.boutEnded {
             currentBout.play(c1, c2) { (shouldContinue) in
-                self.statusLabel.text = "\(self.presentWinner())"
+                
+                if let win = self.currentBout.winner {
+                    self.statusLabel.text = "\(win)"
+                }
 
                 if let shouldContinue = shouldContinue {
                     if !shouldContinue {
-                        self.statusLabel.text = "Winner \(self.presentWinner())"
-                        self.matchEnded.toggle()
+                        self.statusLabel.text = "\(winnerStr)\(self.presentWinner())"
+                        
+                        if self.matchEnded {
+                            self.statusLabel.text = gameOverStr
+                        }
+                        else {
+                            print("\(debugWinsStr)\(self.sk.pOScore.0)")
+                            print("\(debugWinsStr)\(self.sk.pTScore.0)")
+                        }
                     }
                 }
             }
         }
-        else {
-            matchEnded.toggle()
-        }
     }
     
     private func presentWinner() -> Winner {
-        self.statusLabel.text = message
-        return currentBout.winner ?? .draw
+        
+        let winner = currentBout.winner
+        
+        switch winner {
+        case .pOne:
+            if sk.pOScore.0 < 2 {
+                sk.pOScore.0 += 1
+                if sk.pOScore.0 < 2 {
+                    self.reset()
+                }
+                else {
+                    end()
+                }
+            }
+        case .pTwo:
+            if sk.pTScore.0 < 2 {
+                sk.pTScore.0 += 1
+                if sk.pTScore.0 < 2 {
+                    self.reset()
+                }
+                else {
+                    end()
+                }
+            }
+        case .draw:
+            break
+        case .none:
+            break
+        }
+        
+        sk.updateUI()
+        
+        return winner ?? .draw
     }
     
     func setStatusLable(_ lbl: SKLabelNode) {
@@ -289,6 +338,26 @@ class Match {
     }
 }
 
+
+class ScoreKeeper {
+    typealias Score = (Int, SKLabelNode)
+    
+    var pOScore: Score
+    var pTScore: Score
+    
+    init(_ p1: SKLabelNode, _ p2: SKLabelNode) {
+        self.pOScore.1 = p1
+        self.pTScore.1 = p2
+        
+        self.pOScore.0 = 0
+        self.pTScore.0 = 0
+    }
+    
+    func updateUI() {
+        pOScore.1.text = "\(debugWinsStr)\(pOScore.0)"
+        pTScore.1.text = "\(debugWinsStr)\(pTScore.0)"
+    }
+}
 
 
 //  let b = Bout()
