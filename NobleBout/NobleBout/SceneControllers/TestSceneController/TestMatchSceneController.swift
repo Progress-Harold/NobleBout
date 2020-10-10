@@ -8,14 +8,6 @@
 
 import SpriteKit
 
-let rBtn = "rBtn"
-let pBtn = "pBtn"
-let sBtn = "sBtn"
-let hDrink = "hDrinkBtn"
-let eDrink = "eDrinkBtn"
-let drink = "Drink"
-let statusStrLble = "status"
-
 class TestMatchSceneController: SKScene, TestButtonDelegate {
     
     // MARK: - Test Constance
@@ -43,6 +35,8 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     var hDrinksQuant: Int = 10
     var eDrinksQuant: Int = 10
     
+    private var debugModeBtn: SKSpriteNode = SKSpriteNode()
+    
     override func sceneDidLoad() {
         guard let pow = childNode(withName: "p1Wins") as? SKLabelNode,
               let ptw = childNode(withName: "p2Wins") as? SKLabelNode else {
@@ -61,7 +55,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         if match.matchEnded {
-            print("GameOver")
+            print(gameOverStr)
         }
         else {
             if let hpLabel = controlSprites[hp1] as? SKLabelNode {
@@ -76,6 +70,14 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
+                        
+            for touch in touches {
+                let location = touch.location(in: self)
+                
+                if debugModeBtn.contains(location) {
+                    navBackToTitle()
+                }
+            }
             
             controlSprites.forEach { (k, v) in
                 if !match.matchEnded {
@@ -87,6 +89,16 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
                 }
             }
         }
+    }
+    
+    
+    func navBackToTitle() {
+        guard let scene = TitleSceneController(fileNamed: titleScreenStr)  else {
+            return
+        }
+        
+        scene.scaleMode = .aspectFill
+        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
     }
     
     
@@ -107,7 +119,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
         }
         
         if !match.matchEnded, choiceMade {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "choiceMade"), object: nil)
+            NotificationCenter.default.post(name: choiceMadeN, object: nil)
         }
     }
   
@@ -130,6 +142,10 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
         
         if let statusLbl = controlSprites[statusStrLble] as? SKLabelNode {
             match.setStatusLable(statusLbl)
+        }
+        
+        if let dbgBtn = self.childNode(withName: titleNavBtnStr) as? SKSpriteNode {
+            debugModeBtn = dbgBtn
         }
         
         if let hpLabel = controlSprites[hp1] as? SKLabelNode {
