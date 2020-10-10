@@ -13,6 +13,8 @@ class TitleSceneController: SKScene {
     
     var titleEmmiter: SKEmitterNode = SKEmitterNode()
     
+    private var debugModeBtn: SKSpriteNode = SKSpriteNode()
+    
     override func sceneDidLoad() {
         super.sceneDidLoad()
         
@@ -22,12 +24,23 @@ class TitleSceneController: SKScene {
             titleEmmiter.position = emmiter.position
             self.addChild(titleEmmiter)
         }
+        
+        if let dbgBtn = self.childNode(withName: debugModeStr) as? SKSpriteNode {
+            debugModeBtn = dbgBtn
+        }
     }
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        var debugModeOn = false
         
-        guard let scene = SelectScreenController(fileNamed: "SelectScreen")  else {
+        for touch in touches {
+            let location = touch.location(in: self)
+            
+            debugModeOn = debugModeBtn.contains(location)
+        }
+        
+        guard let scene = debugModeOn ? TestMatchSceneController(fileNamed: testSceneStr): SelectScreenController(fileNamed: selectScreenStr)  else {
             return
         }
         scene.scaleMode = .aspectFill

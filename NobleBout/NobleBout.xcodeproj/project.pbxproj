@@ -17,6 +17,7 @@
 		8EB879B5252808E60079CE3C /* Ex+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB879B4252808E60079CE3C /* Ex+String.swift */; };
 		8ED437C825141086002B6786 /* SelectScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8ED437C725141086002B6786 /* SelectScreen.sks */; };
 		A208DD1E2525B6580029D5C7 /* Flames.sks in Resources */ = {isa = PBXBuildFile; fileRef = A208DD1D2525B6580029D5C7 /* Flames.sks */; };
+		A20E98F225312A7500B96F63 /* NBNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20E98F125312A7500B96F63 /* NBNotifications.swift */; };
 		A241187A25290627003DCE59 /* TestMatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A241187925290627003DCE59 /* TestMatchScene.sks */; };
 		A241187B25290627003DCE59 /* TestMatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A241187925290627003DCE59 /* TestMatchScene.sks */; };
 		A241188225290EBE003DCE59 /* TestMatchSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A241188125290EBE003DCE59 /* TestMatchSceneController.swift */; };
@@ -60,6 +61,7 @@
 		8EB879B4252808E60079CE3C /* Ex+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+String.swift"; sourceTree = "<group>"; };
 		8ED437C725141086002B6786 /* SelectScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectScreen.sks; sourceTree = "<group>"; };
 		A208DD1D2525B6580029D5C7 /* Flames.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Flames.sks; sourceTree = "<group>"; };
+		A20E98F125312A7500B96F63 /* NBNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBNotifications.swift; sourceTree = "<group>"; };
 		A241187925290627003DCE59 /* TestMatchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestMatchScene.sks; sourceTree = "<group>"; };
 		A241188125290EBE003DCE59 /* TestMatchSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatchSceneController.swift; sourceTree = "<group>"; };
 		A2411890252A6F27003DCE59 /* TestLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogic.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				8EB879AF252296480079CE3C /* CharacterStrings.swift */,
 				8EB879B12527F9240079CE3C /* UIStrings.swift */,
+				A20E98F125312A7500B96F63 /* NBNotifications.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A20E98F225312A7500B96F63 /* NBNotifications.swift in Sources */,
 				8EB879B0252296480079CE3C /* CharacterStrings.swift in Sources */,
 				8EB879B5252808E60079CE3C /* Ex+String.swift in Sources */,
 				A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */,

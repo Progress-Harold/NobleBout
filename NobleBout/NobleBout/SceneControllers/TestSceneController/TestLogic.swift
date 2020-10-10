@@ -18,16 +18,16 @@ enum Choice: String {
     case paper, rock, scissor
 }
 
-var message: String = ""
-
 // Posible choices
 let choices: [Choice] = [.paper, .rock, .scissor]
+
 // Janken
 typealias JankenCombo = (Choice, Choice)
 func jankenKeyGen(_ combo: JankenCombo) -> String {
     return "\(combo.0)V\(combo.1)"
 }
 
+// TODO: - Add constance
 let resultsDict: [String: Winner] = {
     return [
         // - Paper:
@@ -110,8 +110,8 @@ enum Hero: String {
         }
         return buffs
     }
-    
 }
+
 
 class Player {
     var HP: Int = 100
@@ -179,12 +179,12 @@ class Bout {
         switch j.winner() {
             case .pOne:
                 playerTwo.HP -= 10
-                message = "p2 hp decreased"
+                // "p2 hp decreased"
             case .pTwo:
                 playerOne.HP -= 10
-                message = "p2 hp decreased"
+                // "p2 hp decreased"
             case .draw:
-                message = "Draw"
+                // "Draw"
             break
         }
         
@@ -238,9 +238,9 @@ class Match {
     
     func start() {
         // prompt for choice
-        statusLabel.text = "Make a choice!"
+        statusLabel.text = choiceMsgStr
         
-        NotificationCenter.default.addObserver(self, selector: #selector(playWithChoices), name: NSNotification.Name(rawValue: "choiceMade"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playWithChoices), name: choiceMadeN, object: nil)
 
         // pick a random choice for Computer
         
@@ -253,7 +253,7 @@ class Match {
     }
     
     private func end() {
-        statusLabel.text = "GameOver"
+        statusLabel.text = gameOverStr
         matchEnded.toggle()
     }
     private func reset() {
@@ -282,14 +282,14 @@ class Match {
 
                 if let shouldContinue = shouldContinue {
                     if !shouldContinue {
-                        self.statusLabel.text = "Winner \(self.presentWinner())"
+                        self.statusLabel.text = "\(winnerStr)\(self.presentWinner())"
                         
                         if self.matchEnded {
-                            self.statusLabel.text = "Game Over"
+                            self.statusLabel.text = gameOverStr
                         }
                         else {
-                            print("Wins:\(self.sk.pOScore.0)")
-                            print("Wins:\(self.sk.pTScore.0)")
+                            print("\(debugWinsStr)\(self.sk.pOScore.0)")
+                            print("\(debugWinsStr)\(self.sk.pTScore.0)")
                         }
                     }
                 }
@@ -298,7 +298,6 @@ class Match {
     }
     
     private func presentWinner() -> Winner {
-        self.statusLabel.text = message
         
         let winner = currentBout.winner
         
@@ -355,8 +354,8 @@ class ScoreKeeper {
     }
     
     func updateUI() {
-        pOScore.1.text = "Win:\(pOScore.0)"
-        pTScore.1.text = "Win:\(pTScore.0)"
+        pOScore.1.text = "\(debugWinsStr)\(pOScore.0)"
+        pTScore.1.text = "\(debugWinsStr)\(pTScore.0)"
     }
 }
 
