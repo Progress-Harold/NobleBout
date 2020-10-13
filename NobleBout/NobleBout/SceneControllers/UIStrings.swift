@@ -29,6 +29,8 @@ let choiceMsgStr = "Make a choice!"
 let testSceneStr = "TestMatchScene"
 // Misc:
 
+let timerStr = "timer"
+
 // Buttons
 let rBtnStr = "rBtn"
 let pBtnStr = "pBtn"
@@ -38,4 +40,8 @@ let restartBtnStr = "restartBtn"
 let hDrinkStr = "hDrinkBtn"
 let eDrinkStr = "eDrinkBtn"
 let drinkStr = "Drink"
+
+// Labels
 let statusLblStr = "status"
+let player1Lble = "Player1Lble"
+let player2Lble = "Player2Lble"

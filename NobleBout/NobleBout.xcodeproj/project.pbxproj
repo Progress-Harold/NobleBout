@@ -32,6 +32,7 @@
 		A2A9BB87250EDDE50021502C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A9BB85250EDDE50021502C /* LaunchScreen.storyboard */; };
 		A2A9BB92250EDDE50021502C /* NobleBoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB91250EDDE50021502C /* NobleBoutTests.swift */; };
 		A2A9BB9D250EDDE50021502C /* NobleBoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB9C250EDDE50021502C /* NobleBoutUITests.swift */; };
+		A2B8283B253401B600735B94 /* TestUIEndingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B8283A253401B600735B94 /* TestUIEndingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		A2A9BB98250EDDE50021502C /* NobleBoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NobleBoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A9BB9C250EDDE50021502C /* NobleBoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobleBoutUITests.swift; sourceTree = "<group>"; };
 		A2A9BB9E250EDDE50021502C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2B8283A253401B600735B94 /* TestUIEndingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIEndingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				A241188125290EBE003DCE59 /* TestMatchSceneController.swift */,
 				A2411890252A6F27003DCE59 /* TestLogic.swift */,
+				A2B8283A253401B600735B94 /* TestUIEndingScreen.swift */,
 			);
 			path = TestSceneController;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				8EB879B22527F9240079CE3C /* UIStrings.swift in Sources */,
 				A2411891252A6F27003DCE59 /* TestLogic.swift in Sources */,
 				A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */,
+				A2B8283B253401B600735B94 /* TestUIEndingScreen.swift in Sources */,
 				8EB7021B25101B3500CC0EB6 /* Utilities.swift in Sources */,
 				8EB879AE251EC1E50079CE3C /* SelectScreenController.swift in Sources */,
 				A241188225290EBE003DCE59 /* TestMatchSceneController.swift in Sources */,

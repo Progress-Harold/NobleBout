@@ -11,3 +11,4 @@ import Foundation
 // Notification Names
 let choiceMadeN = NSNotification.Name(rawValue: "choiceMade")
 let resetMatchN = NSNotification.Name(rawValue: "resetMatch")
+let fightAnimationEndN = Notification.Name(rawValue: "fightAnim")

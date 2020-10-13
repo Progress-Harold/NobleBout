@@ -22,8 +22,18 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     let eType = "e"
     let emptyStr = ""
 
+    // NOTE: Animate to 0 x position
+    // Starting x position: -480
+    // MARK: - TimerUI
+    var visualTimerSpr: SKSpriteNode = SKSpriteNode()
+    var timerActive: Bool = false
+    var timerShouldRun: Bool = true
+    var choiceWasMade: Bool = false
+    var bufferActive: Bool = false
+    var fightAnimationComplete: Bool = false
+    
     var protoNames: [String] {
-        return [p1Icon, p2Icon, hp1, hp2, rBtnStr, pBtnStr, sBtnStr, hDrinkStr, eDrinkStr, statusLblStr, restartBtnStr]
+        return [p1Icon, p2Icon, hp1, hp2, rBtnStr, pBtnStr, sBtnStr, hDrinkStr, eDrinkStr, statusLblStr, restartBtnStr, player1Lble, player2Lble]
     }
     
     // MARK: - Button and Lable Hash
@@ -37,27 +47,52 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     var hDrinksQuant: Int = 10
     var eDrinksQuant: Int = 10
     
+    var opponent: Hero!
+    
     private var debugModeBtn: SKSpriteNode = SKSpriteNode()
     
-    override func sceneDidLoad() {
+    private var gameOverUI = TestUIEndingScreen()
+    
+    override func didMove(to view: SKView) {
         guard let pow = childNode(withName: p1w) as? SKLabelNode,
               let ptw = childNode(withName: p2w) as? SKLabelNode else {
             return
         }
         
-        match = Match(p1: Player(.masa), p2: Player(.tetsu), sk: ScoreKeeper(pow, ptw))
-        
-        setupUI()
-        
+        if ArcadeController.test_instance.heroWasChosen {
+            
+             match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeper(pow, ptw))
+        }
+        else {
+            ArcadeController.test_instance.selectCharacter(.masa)
+            opponent = ArcadeController.test_instance.upNext()
+            
+            match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeper(pow, ptw))
+        }
+
+        self.setupUI()
         playerOne = (match?.currentBout.playerOne)!
         playerTwo = (match?.currentBout.playerTwo)!
         
         startMatch()
+        
+        print("Before timer...")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            print("Timer Starting")
+            self.animateTimer()
+        }
+    }
+    
+    override func sceneDidLoad() {
+        NotificationCenter.default.addObserver(self, selector: #selector(animateTimer), name: fightAnimationEndN, object: nil)
     }
     
     override func update(_ currentTime: TimeInterval) {
         if match.matchEnded {
+            timerShouldRun = false
+            bufferActive = true
             print(gameOverStr)
+            loadNextMatch()
         }
         else {
             if let hpLabel = controlSprites[hp1] as? SKLabelNode {
@@ -70,22 +105,21 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: self)
-                        
-            for touch in touches {
-                let location = touch.location(in: self)
-                
-                if debugModeBtn.contains(location) {
-                    navBackToTitle()
-                }
-            }
-            
-            controlSprites.forEach { (k, v) in
-                if !match.matchEnded {
-                    if let sprite = v as? STBtn {
-                        if sprite.contains(location) {
-                            sprite.touchesEnded(touches, with: event)
+            if timerActive, !choiceWasMade, !bufferActive {
+                bufferActive = true
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    
+                    if debugModeBtn.contains(location) {
+                        navBackToTitle()
+                    }
+                    
+                controlSprites.forEach { (k, v) in
+                    if !match.matchEnded {
+                        if let sprite = v as? STBtn {
+                            if sprite.contains(location) {
+                                sprite.touchesEnded(touches, with: event)
+                            }
                         }
                     }
                 }
@@ -107,7 +141,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     
     
     func didTap(_ btn: TButton) {
-        var choiceMade = true
+        choiceWasMade = true
         
         switch btn {
         case .rock:
@@ -117,15 +151,15 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
         case .sissors:
             match.setBout(.scissor)
         case .hDrink:
-            choiceMade = false
+            choiceWasMade = false
         case .eDrink:
-            choiceMade = false
+            choiceWasMade = false
         case .refresh:
-            choiceMade = false
+            choiceWasMade = false
             restart()
         }
         
-        if !match.matchEnded, choiceMade {
+        if !match.matchEnded, choiceWasMade {
             NotificationCenter.default.post(name: choiceMadeN, object: nil)
         }
     }
@@ -140,6 +174,44 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     }
     
     
+    @objc func animateTimer() {
+        choiceWasMade = false
+        timerActive = true
+        
+        if timerShouldRun {
+            visualTimerSpr.run(.moveTo(x: 0, duration: 4)) {
+                self.timerActive = false
+                
+                if !self.choiceWasMade && !self.match.matchEnded {
+                    self.didTap(.paper)
+                }
+                
+                self.visualTimerSpr.position.x = -480
+                self.bufferActive = false
+            }
+        }
+    }
+    
+    
+    func loadNextMatch() {
+        guard let scene = TestMatchSceneController(fileNamed: testSceneStr)  else {
+            return
+        }
+        
+        if let nextOpponent = ArcadeController.test_instance.upNext() {
+            scene.opponent = nextOpponent
+                scene.scaleMode = .aspectFill
+            
+            self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
+        }
+        else {
+            gameOverUI.presentWithAnim() {
+                ArcadeController.test_instance.chosenHero = nil
+                self.navBackToTitle()
+            }
+        }
+    }
+    
     // MARK: - Setup
     
     func setupUI() {
@@ -153,6 +225,13 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
                 }
                 else if let protoSprite = protoSprite as? SKLabelNode {
                     controlSprites[protoSprite.name ?? emptyStr] = protoSprite
+                    
+                    if protoSprite.name == player1Lble {
+                        protoSprite.text = ArcadeController.test_instance.chosenHero?.rawValue
+                    }
+                    else if protoSprite.name == player2Lble {
+                        protoSprite.text = opponent.rawValue
+                    }
                 }
             }
         }
@@ -171,6 +250,13 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
         if let hpLabel = controlSprites[hp2] as? SKLabelNode {
             hpLabel.text = "HP2:\(playerTwo.HP)"
         }
+        
+        visualTimerSpr = self.findNode(name: timerStr)
+        visualTimerSpr.zPosition = 40
+        
+        self.addChild(gameOverUI.mainNode)
+        gameOverUI.mainNode.alpha = 1
+        gameOverUI.mainNode.zPosition = 50
     }
     
     // MARK: - Key Functionality

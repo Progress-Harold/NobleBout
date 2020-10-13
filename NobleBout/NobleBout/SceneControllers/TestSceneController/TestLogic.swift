@@ -203,10 +203,10 @@ class Bout {
         let j = JankenRound(p1c, p2c)
         switch j.winner() {
             case .pOne:
-                playerTwo.HP -= 10
+                playerTwo.HP -= 100
                 // "p2 hp decreased"
             case .pTwo:
-                playerOne.HP -= 10
+                playerOne.HP -= 100
                 // "p2 hp decreased"
             case .draw:
                 // "Draw"
@@ -286,7 +286,6 @@ class Match {
     }
     @objc private func reset() {
         currentBout.reset()
-        matchEnded.toggle()
         statusLabel.text = choiceMsgStr
     }
     func pause() {}
@@ -312,7 +311,8 @@ class Match {
 
                 if let shouldContinue = shouldContinue {
                     if !shouldContinue {
-                        self.statusLabel.text = "\(winnerStr)\(self.presentWinner())"
+                        
+                        self.presentWinner()
                         
                         if self.matchEnded {
                             self.statusLabel.text = gameOverStr
@@ -327,7 +327,7 @@ class Match {
         }
     }
     
-    private func presentWinner() -> Winner {
+    private func presentWinner() {
         
         let winner = currentBout.winner
         
@@ -353,14 +353,18 @@ class Match {
                 }
             }
         case .draw:
-            break
+            self.reset()
         case .none:
             break
         }
         
-        sk.updateUI()
-        
-        return winner ?? .draw
+        // Animate fight
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            if !self.matchEnded {
+                self.sk.updateUI()
+                self.statusLabel.text = "\(winnerStr)\(winner ?? .draw)"
+            }
+        }
     }
     
     func setStatusLable(_ lbl: SKLabelNode) {
@@ -384,64 +388,9 @@ class ScoreKeeper {
     }
     
     func updateUI() {
+        NotificationCenter.default.post(name: fightAnimationEndN, object: nil)
         pOScore.1.text = "\(debugWinsStr)\(pOScore.0)"
         pTScore.1.text = "\(debugWinsStr)\(pTScore.0)"
-    }
-}
-
-class Node<Element> {
-    let value: Element
-    var next: Node?
-    
-    init(_ value: Element) {
-        self.value = value
-    }
-}
-
-struct Stack<Element> {
-    private var top: Node<Element>?
-    
-    var isEmpty: Bool {
-        return (peek() == nil)
-    }
-    
-    init() { }
-    
-    init(_ elements: [Element]) {
-        for (i) in 0...elements.count - 1 {
-           push(elements[i])
-        }
-    }
-    
-    func peek() -> Element? {
-        return top?.value
-    }
-    
-    mutating func push(_ element: Element) {
-        let oldTop = top
-        top = Node(element)
-        top?.next = oldTop
-    }
-    
-    mutating func pop() -> Element? {
-        let currentTop: Node<Element>? = top
-        
-        top = top?.next
-        return currentTop?.value
-    }
-    
-    func mapForDescription(completion:([String])->([String])) -> [String] {
-        var currentTop = top
-        var values: [String] = []
-        
-        while currentTop?.next != nil {
-            values.append("\(currentTop!.value)")
-            currentTop = currentTop?.next
-        }
-        
-        values.append("\(currentTop!.value)")
-        
-        return completion(values)
     }
 }
 
@@ -449,25 +398,28 @@ struct Stack<Element> {
 class ArcadeController {
     static var test_instance =  ArcadeController()
     
-    private var chosenHero: Hero?
-    private var rosterStack = Stack<Hero>()
+    var chosenHero: Hero?
+    var heroWasChosen: Bool {
+        return (chosenHero != nil)
+    }
+    
+    private var rosterStack = [Hero]()
     
     
     func selectCharacter(_ chosenHero: Hero) {
         self.chosenHero = chosenHero
         
-        rosterStack = Stack(chosenHero.roster)
+        rosterStack = chosenHero.roster.reversed()
     }
     
     func upNext() -> Hero? {
-        guard let hero = chosenHero else {
+        guard chosenHero != nil else {
             print("No Hero was selected!")
             return nil
         }
         
-        return rosterStack.pop()
+        return rosterStack.popLast()
     }
-    
 }
 
 
