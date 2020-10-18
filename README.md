@@ -29,3 +29,12 @@ git commit -m "NB2-55-EngineeringDocsAdded"
   - To start typing a message type `i` on your keyboard. Then type what you want.
   - To cancel or NOT save (commit) this message and the work just type `:q!`. That will quit and get you out of the visual editor.
   - To save your message just type`:wq`. That stands for “write“ and “quit“.
+  
+  
+# Prototype Known Bugs:
+
+- When a choice is made the label the reslt is calculated and the label updates
+- When the timer is up if the choices cause a draw, then the game will no longer function.
+    - Expected: that the timer will run again like normal.
+-  Restart button is not tapable at all times 
+-  Title screen button is not tapable at all times
