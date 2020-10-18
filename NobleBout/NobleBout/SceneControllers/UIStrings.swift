@@ -28,7 +28,6 @@ let choiceMsgStr = "Make a choice!"
 // TestScene
 let testSceneStr = "TestMatchScene"
 // Misc:
-
 let timerStr = "timer"
 
 // Buttons

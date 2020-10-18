@@ -58,7 +58,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
               let ptw = childNode(withName: p2w) as? SKLabelNode else {
             return
         }
-        
+    
         if ArcadeController.test_instance.heroWasChosen {
             
              match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeper(pow, ptw))
@@ -103,6 +103,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
             }
         }
     }
+    
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             if timerActive, !choiceWasMade, !bufferActive {

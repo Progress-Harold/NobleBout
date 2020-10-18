@@ -31,6 +31,34 @@ enum Choice: String {
     case paper, rock, scissor
 }
 
+// Posible choices
+let choices: [Choice] = [.paper, .rock, .scissor]
+
+// Janken
+typealias JankenCombo = (Choice, Choice)
+func jankenKeyGen(_ combo: JankenCombo) -> String {
+    return "\(combo.0)V\(combo.1)"
+}
+
+// TODO: - Add constance
+let resultsDict: [String: Winner] = {
+    return [
+        // - Paper:
+        "paperVrock": .pOne,
+        "paperVscissor": .pTwo,
+        "paperVpaper": .draw,
+        // - Scissors:
+        "scissorVrock": .pTwo,
+        "scissorVpaper": .pOne,
+        "scissorVscissor": .draw,
+        // - Rock
+        "rockVscissor": .pOne,
+        "rockVpaper": .pTwo,
+        "rockVrock": .draw,
+    ]
+}()
+
+
 enum Buff {
     // Buffs
     case hp
@@ -84,34 +112,6 @@ enum Hero: String {
         }
     }
 }
-
-
-// Posible choices
-let choices: [Choice] = [.paper, .rock, .scissor]
-
-// Janken Convenience
-typealias JankenCombo = (Choice, Choice)
-func jankenKeyGen(_ combo: JankenCombo) -> String {
-    return "\(combo.0)V\(combo.1)"
-}
-
-// TODO: - Add constance
-let resultsDict: [String: Winner] = {
-    return [
-        // - Paper:
-        "paperVrock": .pOne,
-        "paperVscissor": .pTwo,
-        "paperVpaper": .draw,
-        // - Scissors:
-        "scissorVrock": .pTwo,
-        "scissorVpaper": .pOne,
-        "scissorVscissor": .draw,
-        // - Rock
-        "rockVscissor": .pOne,
-        "rockVpaper": .pTwo,
-        "rockVrock": .draw,
-    ]
-}()
 
 
 class Player {
@@ -203,10 +203,10 @@ class Bout {
         let j = JankenRound(p1c, p2c)
         switch j.winner() {
             case .pOne:
-                playerTwo.HP -= 100
+                playerTwo.HP -= 10
                 // "p2 hp decreased"
             case .pTwo:
-                playerOne.HP -= 100
+                playerOne.HP -= 10
                 // "p2 hp decreased"
             case .draw:
                 // "Draw"
@@ -269,7 +269,7 @@ class Match {
         
         NotificationCenter.default.addObserver(self, selector: #selector(playWithChoices), name: choiceMadeN, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reset), name: resetMatchN, object: nil)
-        
+
         // pick a random choice for Computer
         
         // use current bout to play a bout
@@ -284,6 +284,7 @@ class Match {
         statusLabel.text = gameOverStr
         matchEnded.toggle()
     }
+
     @objc private func reset() {
         currentBout.reset()
         statusLabel.text = choiceMsgStr
@@ -313,6 +314,7 @@ class Match {
                     if !shouldContinue {
                         
                         self.presentWinner()
+
                         
                         if self.matchEnded {
                             self.statusLabel.text = gameOverStr
@@ -328,7 +330,7 @@ class Match {
     }
     
     private func presentWinner() {
-        
+
         let winner = currentBout.winner
         
         switch winner {
@@ -362,7 +364,7 @@ class Match {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             if !self.matchEnded {
                 self.sk.updateUI()
-                self.statusLabel.text = "\(winnerStr)\(winner ?? .draw)"
+                self.statusLabel.text = "\(winnerStr)\(winner!)"
             }
         }
     }
@@ -389,6 +391,7 @@ class ScoreKeeper {
     
     func updateUI() {
         NotificationCenter.default.post(name: fightAnimationEndN, object: nil)
+
         pOScore.1.text = "\(debugWinsStr)\(pOScore.0)"
         pTScore.1.text = "\(debugWinsStr)\(pTScore.0)"
     }
