@@ -10,6 +10,19 @@
 import Foundation
 import SpriteKit
 
+/*
+* Logic Summery *
+ 
+ > Match - A match will run bouts until a player's score reaches
+    > Bouth - A bout will run indevidual janken rounds until a players hp is 0
+        > Janken
+                - A janken round is when a player one's choice of r,p, or s is placed against a random choice.
+                - The winner will take hp from the other
+ */
+
+
+// MARK: - Components
+
 // MARK: - Enums
 enum Winner: String {
     case pOne, pTwo, draw
@@ -44,25 +57,6 @@ let resultsDict: [String: Winner] = {
         "rockVrock": .draw,
     ]
 }()
-
-struct JankenRound {
-    let pOChoice: Choice
-    let pTChoice: Choice
-    
-    func winner() -> Winner {
-        guard (resultsDict[jankenKeyGen((pOChoice, pTChoice))] != nil) else {
-            print("\(jankenKeyGen((pOChoice, pTChoice))) is not in the dictionary.")
-            return .draw
-        }
-        
-        return resultsDict[jankenKeyGen((pOChoice, pTChoice))]!
-    }
-    
-    init(_ p1c:Choice, _ p2c: Choice) {
-        self.pOChoice = p1c
-        self.pTChoice = p2c
-    }
-}
 
 
 enum Buff {
@@ -110,11 +104,18 @@ enum Hero: String {
         }
         return buffs
     }
+    
+    var roster: [Hero] {
+        switch self {
+        default:
+            return [.griff, .eris, .abziu, .tetsu]
+        }
+    }
 }
 
 
 class Player {
-    var HP: Int = 100
+    var HP: Int = 10
     var TP: Int = 60
     
     private let hero: Hero
@@ -126,7 +127,7 @@ class Player {
     }
     
     func refresh() {
-        self.HP = 100
+        self.HP = 10
         self.TP = 60
     }
     
@@ -145,6 +146,30 @@ class Player {
     }
 }
 
+// MARK: - Match Flow Logic
+
+/// JankenRound
+struct JankenRound {
+    let pOChoice: Choice
+    let pTChoice: Choice
+    
+    func winner() -> Winner {
+        guard (resultsDict[jankenKeyGen((pOChoice, pTChoice))] != nil) else {
+            print("\(jankenKeyGen((pOChoice, pTChoice))) is not in the dictionary.")
+            return .draw
+        }
+        
+        return resultsDict[jankenKeyGen((pOChoice, pTChoice))]!
+    }
+    
+    init(_ p1c:Choice, _ p2c: Choice) {
+        self.pOChoice = p1c
+        self.pTChoice = p2c
+    }
+}
+
+
+/// Bout
 class Bout {
     var playerOne: Player!
     var playerTwo: Player!
@@ -219,6 +244,8 @@ class Bout {
     }
 }
 
+
+/// Match
 class Match {
     var sk: ScoreKeeper
     
@@ -241,6 +268,7 @@ class Match {
         statusLabel.text = choiceMsgStr
         
         NotificationCenter.default.addObserver(self, selector: #selector(playWithChoices), name: choiceMadeN, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reset), name: resetMatchN, object: nil)
 
         // pick a random choice for Computer
         
@@ -256,8 +284,10 @@ class Match {
         statusLabel.text = gameOverStr
         matchEnded.toggle()
     }
-    private func reset() {
+
+    @objc private func reset() {
         currentBout.reset()
+        statusLabel.text = choiceMsgStr
     }
     func pause() {}
     
@@ -282,10 +312,14 @@ class Match {
 
                 if let shouldContinue = shouldContinue {
                     if !shouldContinue {
-                        self.statusLabel.text = "\(winnerStr)\(self.presentWinner())"
+                        
+                        self.presentWinner()
                         
                         if self.matchEnded {
                             self.statusLabel.text = gameOverStr
+                            self.sk.updateUI()
+                            print("\(debugWinsStr)\(self.sk.pOScore.0)")
+                            print("\(debugWinsStr)\(self.sk.pTScore.0)")
                         }
                         else {
                             print("\(debugWinsStr)\(self.sk.pOScore.0)")
@@ -297,29 +331,25 @@ class Match {
         }
     }
     
-    private func presentWinner() -> Winner {
-        
+    private func presentWinner() {
+
         let winner = currentBout.winner
         
         switch winner {
         case .pOne:
             if sk.pOScore.0 < 2 {
                 sk.pOScore.0 += 1
-                if sk.pOScore.0 < 2 {
+                if !(sk.pOScore.0 < 2) {
                     self.reset()
-                }
-                else {
-                    end()
+                    self.end()
                 }
             }
         case .pTwo:
             if sk.pTScore.0 < 2 {
                 sk.pTScore.0 += 1
-                if sk.pTScore.0 < 2 {
+                if !(sk.pTScore.0 < 2) {
                     self.reset()
-                }
-                else {
-                    end()
+                    self.end()
                 }
             }
         case .draw:
@@ -328,9 +358,13 @@ class Match {
             break
         }
         
-        sk.updateUI()
-        
-        return winner ?? .draw
+        // Animate fight
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            if !self.matchEnded {
+                self.sk.updateUI()
+                self.statusLabel.text = "\(winnerStr)\(winner!)"
+            }
+        }
     }
     
     func setStatusLable(_ lbl: SKLabelNode) {
@@ -354,17 +388,43 @@ class ScoreKeeper {
     }
     
     func updateUI() {
+        NotificationCenter.default.post(name: fightAnimationEndN, object: nil)
+
         pOScore.1.text = "\(debugWinsStr)\(pOScore.0)"
         pTScore.1.text = "\(debugWinsStr)\(pTScore.0)"
     }
 }
 
 
-//  let b = Bout()
-//  b.testGame()
-//  b.winner
-//  b.playerTwo.HP
-
+class ArcadeController {
+    static var test_instance =  ArcadeController()
+    
+    var chosenHero: Hero?
+    var heroWasChosen: Bool {
+        return (chosenHero != nil)
+    }
+    var opponent: Hero? {
+        return upNext()
+    }
+    
+    private var rosterStack = [Hero]()
+    
+    
+    func selectCharacter(_ chosenHero: Hero) {
+        self.chosenHero = chosenHero
+        
+        rosterStack = chosenHero.roster.reversed()
+    }
+    
+    private func upNext() -> Hero? {
+        guard chosenHero != nil else {
+            print("No Hero was selected!")
+            return nil
+        }
+        
+        return rosterStack.popLast()
+    }
+}
 
 
 

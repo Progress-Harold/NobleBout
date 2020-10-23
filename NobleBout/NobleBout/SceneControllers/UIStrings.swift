@@ -28,10 +28,19 @@ let choiceMsgStr = "Make a choice!"
 // TestScene
 let testSceneStr = "TestMatchScene"
 // Misc:
-let rBtn = "rBtn"
-let pBtn = "pBtn"
-let sBtn = "sBtn"
-let hDrink = "hDrinkBtn"
-let eDrink = "eDrinkBtn"
-let drink = "Drink"
-let statusStrLble = "status"
+let timerStr = "timer"
+
+// Buttons
+let rBtnStr = "rBtn"
+let pBtnStr = "pBtn"
+let sBtnStr = "sBtn"
+let restartBtnStr = "restartBtn"
+
+let hDrinkStr = "hDrinkBtn"
+let eDrinkStr = "eDrinkBtn"
+let drinkStr = "Drink"
+
+// Labels
+let statusLblStr = "status"
+let player1Lble = "Player1Lble"
+let player2Lble = "Player2Lble"
