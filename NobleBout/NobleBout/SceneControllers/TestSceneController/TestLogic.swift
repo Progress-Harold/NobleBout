@@ -115,7 +115,7 @@ enum Hero: String {
 
 
 class Player {
-    var HP: Int = 100
+    var HP: Int = 10
     var TP: Int = 60
     
     private let hero: Hero
@@ -127,7 +127,7 @@ class Player {
     }
     
     func refresh() {
-        self.HP = 100
+        self.HP = 10
         self.TP = 60
     }
     
@@ -314,10 +314,12 @@ class Match {
                     if !shouldContinue {
                         
                         self.presentWinner()
-
                         
                         if self.matchEnded {
                             self.statusLabel.text = gameOverStr
+                            self.sk.updateUI()
+                            print("\(debugWinsStr)\(self.sk.pOScore.0)")
+                            print("\(debugWinsStr)\(self.sk.pTScore.0)")
                         }
                         else {
                             print("\(debugWinsStr)\(self.sk.pOScore.0)")
@@ -337,25 +339,21 @@ class Match {
         case .pOne:
             if sk.pOScore.0 < 2 {
                 sk.pOScore.0 += 1
-                if sk.pOScore.0 < 2 {
+                if !(sk.pOScore.0 < 2) {
                     self.reset()
-                }
-                else {
-                    end()
+                    self.end()
                 }
             }
         case .pTwo:
             if sk.pTScore.0 < 2 {
                 sk.pTScore.0 += 1
-                if sk.pTScore.0 < 2 {
+                if !(sk.pTScore.0 < 2) {
                     self.reset()
-                }
-                else {
-                    end()
+                    self.end()
                 }
             }
         case .draw:
-            self.reset()
+            break
         case .none:
             break
         }
@@ -405,6 +403,9 @@ class ArcadeController {
     var heroWasChosen: Bool {
         return (chosenHero != nil)
     }
+    var opponent: Hero? {
+        return upNext()
+    }
     
     private var rosterStack = [Hero]()
     
@@ -415,7 +416,7 @@ class ArcadeController {
         rosterStack = chosenHero.roster.reversed()
     }
     
-    func upNext() -> Hero? {
+    private func upNext() -> Hero? {
         guard chosenHero != nil else {
             print("No Hero was selected!")
             return nil

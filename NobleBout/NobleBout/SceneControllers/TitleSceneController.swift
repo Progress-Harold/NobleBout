@@ -43,6 +43,7 @@ class TitleSceneController: SKScene {
         guard let scene = debugModeOn ? TestMatchSceneController(fileNamed: testSceneStr): SelectScreenController(fileNamed: selectScreenStr)  else {
             return
         }
+        
         scene.scaleMode = .aspectFill
         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
     }

@@ -24,6 +24,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
 
     // NOTE: Animate to 0 x position
     // Starting x position: -480
+    
     // MARK: - TimerUI
     var visualTimerSpr: SKSpriteNode = SKSpriteNode()
     var timerActive: Bool = false
@@ -47,7 +48,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     var hDrinksQuant: Int = 10
     var eDrinksQuant: Int = 10
     
-    var opponent: Hero!
+    var opponent: Hero = .tetsu
     
     private var debugModeBtn: SKSpriteNode = SKSpriteNode()
     
@@ -59,14 +60,16 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
             return
         }
     
-        if ArcadeController.test_instance.heroWasChosen {
-            
-             match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeper(pow, ptw))
+        if ArcadeController.test_instance.heroWasChosen,
+           let nextOpponent = ArcadeController.test_instance.opponent  {
+            opponent = nextOpponent
+            match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeper(pow, ptw))
         }
         else {
             ArcadeController.test_instance.selectCharacter(.masa)
-            opponent = ArcadeController.test_instance.upNext()
+            guard let nextOpponent = ArcadeController.test_instance.opponent else { return }
             
+            opponent = nextOpponent
             match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeper(pow, ptw))
         }
 
@@ -106,7 +109,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-            if timerActive, !choiceWasMade, !bufferActive {
+            if timerActive, !choiceWasMade {
                 bufferActive = true
                 for touch in touches {
                     let location = touch.location(in: self)
@@ -116,8 +119,17 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
                     }
                     
                 controlSprites.forEach { (k, v) in
-                    if !match.matchEnded {
-                        if let sprite = v as? STBtn {
+                    if let sprite = v as? STBtn,
+                       sprite.name == restartBtnStr,
+                       sprite.contains(location) {
+                        sprite.touchesEnded(touches, with: event)
+                    }
+
+                    
+                    
+                    if !match.matchEnded || !bufferActive {
+                        if let sprite = v as? STBtn,
+                           sprite.name != restartBtnStr {
                             if sprite.contains(location) {
                                 sprite.touchesEnded(touches, with: event)
                             }
@@ -184,24 +196,28 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
                 self.timerActive = false
                 
                 if !self.choiceWasMade && !self.match.matchEnded {
+                    // TODO: Choose a random option for the player, add badChoice
                     self.didTap(.paper)
                 }
                 
                 self.visualTimerSpr.position.x = -480
                 self.bufferActive = false
+                self.choiceWasMade = false
+                
+                if self.timerShouldRun {
+                    self.animateTimer()
+                }
             }
         }
     }
     
     
     func loadNextMatch() {
-        guard let scene = TestMatchSceneController(fileNamed: testSceneStr)  else {
-            return
-        }
-        
-        if let nextOpponent = ArcadeController.test_instance.upNext() {
-            scene.opponent = nextOpponent
-                scene.scaleMode = .aspectFill
+        if ArcadeController.test_instance.opponent != nil {
+            guard let scene = TestMatchSceneController(fileNamed: testSceneStr)  else {
+                return
+            }
+            scene.scaleMode = .aspectFill
             
             self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
         }
@@ -285,7 +301,7 @@ protocol TestButtonDelegate {
 }
 
 enum TButton {
-    case rock, paper, sissors, hDrink, eDrink, refresh
+    case rock, paper, sissors, hDrink, eDrink, refresh //TODO: add badChoice case
 }
 
 /// SpriteNode Test Button
