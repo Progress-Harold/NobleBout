@@ -105,6 +105,10 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
                 hpLabel.text = "HP2:\(playerTwo.HP)"
             }
         }
+        
+        if !timerActive && self.timerShouldRun {
+            self.animateTimer()
+        }
     }
     
     
@@ -193,7 +197,6 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
         
         if timerShouldRun {
             visualTimerSpr.run(.moveTo(x: 0, duration: 4)) {
-                self.timerActive = false
                 
                 if !self.choiceWasMade && !self.match.matchEnded {
                     // TODO: Choose a random option for the player, add badChoice
@@ -201,12 +204,10 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
                 }
                 
                 self.visualTimerSpr.position.x = -480
+                // wait for animation
+                self.timerActive = false
                 self.bufferActive = false
                 self.choiceWasMade = false
-                
-                if self.timerShouldRun {
-                    self.animateTimer()
-                }
             }
         }
     }

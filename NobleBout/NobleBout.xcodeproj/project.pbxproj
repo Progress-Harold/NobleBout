@@ -25,6 +25,8 @@
 		A241188325290EBE003DCE59 /* TestMatchSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A241188125290EBE003DCE59 /* TestMatchSceneController.swift */; };
 		A2411891252A6F27003DCE59 /* TestLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2411890252A6F27003DCE59 /* TestLogic.swift */; };
 		A2411892252A6F27003DCE59 /* TestLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2411890252A6F27003DCE59 /* TestLogic.swift */; };
+		A282D5902544129300B78B9D /* TestSelectScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A282D58F2544129300B78B9D /* TestSelectScene.sks */; };
+		A282D5912544129300B78B9D /* TestSelectScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A282D58F2544129300B78B9D /* TestSelectScene.sks */; };
 		A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB76250EDDE20021502C /* AppDelegate.swift */; };
 		A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB7E250EDDE20021502C /* GameViewController.swift */; };
 		A2A9BB82250EDDE20021502C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A9BB80250EDDE20021502C /* Main.storyboard */; };
@@ -68,6 +70,7 @@
 		A241187925290627003DCE59 /* TestMatchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestMatchScene.sks; sourceTree = "<group>"; };
 		A241188125290EBE003DCE59 /* TestMatchSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatchSceneController.swift; sourceTree = "<group>"; };
 		A2411890252A6F27003DCE59 /* TestLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogic.swift; sourceTree = "<group>"; };
+		A282D58F2544129300B78B9D /* TestSelectScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSelectScene.sks; sourceTree = "<group>"; };
 		A2A9BB73250EDDE20021502C /* NobleBout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NobleBout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A9BB76250EDDE20021502C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2A9BB7E250EDDE20021502C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				A241187925290627003DCE59 /* TestMatchScene.sks */,
+				A282D58F2544129300B78B9D /* TestSelectScene.sks */,
 			);
 			path = TestScene;
 			sourceTree = "<group>";
@@ -375,6 +379,7 @@
 				A241187A25290627003DCE59 /* TestMatchScene.sks in Resources */,
 				A2A9BB84250EDDE50021502C /* Assets.xcassets in Resources */,
 				8E0C9AA42510120300EA3C78 /* Assets.xcassets in Resources */,
+				A282D5902544129300B78B9D /* TestSelectScene.sks in Resources */,
 				A2A9BB87250EDDE50021502C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +395,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A282D5912544129300B78B9D /* TestSelectScene.sks in Resources */,
 				A241187B25290627003DCE59 /* TestMatchScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
