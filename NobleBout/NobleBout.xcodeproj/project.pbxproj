@@ -25,6 +25,14 @@
 		A241188325290EBE003DCE59 /* TestMatchSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A241188125290EBE003DCE59 /* TestMatchSceneController.swift */; };
 		A2411891252A6F27003DCE59 /* TestLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2411890252A6F27003DCE59 /* TestLogic.swift */; };
 		A2411892252A6F27003DCE59 /* TestLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2411890252A6F27003DCE59 /* TestLogic.swift */; };
+		A25ADE6C25527B5700416022 /* MatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ADE6B25527B5700416022 /* MatchController.swift */; };
+		A25ADE7525527D9200416022 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ADE7425527D9200416022 /* Match.swift */; };
+		A25ADE7625527D9200416022 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ADE7425527D9200416022 /* Match.swift */; };
+		A25ADE7E25527DF800416022 /* PlayerUIStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ADE7D25527DF800416022 /* PlayerUIStruct.swift */; };
+		A25ADE7F25527DF800416022 /* PlayerUIStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ADE7D25527DF800416022 /* PlayerUIStruct.swift */; };
+		A25ADE8025527DF800416022 /* PlayerUIStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ADE7D25527DF800416022 /* PlayerUIStruct.swift */; };
+		A26F436B2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26F436A2552817C00DB1DE5 /* PlayerInterfaceController.swift */; };
+		A26F436C2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26F436A2552817C00DB1DE5 /* PlayerInterfaceController.swift */; };
 		A282D5902544129300B78B9D /* TestSelectScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A282D58F2544129300B78B9D /* TestSelectScene.sks */; };
 		A282D5912544129300B78B9D /* TestSelectScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A282D58F2544129300B78B9D /* TestSelectScene.sks */; };
 		A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB76250EDDE20021502C /* AppDelegate.swift */; };
@@ -70,6 +78,10 @@
 		A241187925290627003DCE59 /* TestMatchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestMatchScene.sks; sourceTree = "<group>"; };
 		A241188125290EBE003DCE59 /* TestMatchSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatchSceneController.swift; sourceTree = "<group>"; };
 		A2411890252A6F27003DCE59 /* TestLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogic.swift; sourceTree = "<group>"; };
+		A25ADE6B25527B5700416022 /* MatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchController.swift; sourceTree = "<group>"; };
+		A25ADE7425527D9200416022 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		A25ADE7D25527DF800416022 /* PlayerUIStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUIStruct.swift; sourceTree = "<group>"; };
+		A26F436A2552817C00DB1DE5 /* PlayerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInterfaceController.swift; sourceTree = "<group>"; };
 		A282D58F2544129300B78B9D /* TestSelectScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSelectScene.sks; sourceTree = "<group>"; };
 		A2A9BB73250EDDE20021502C /* NobleBout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NobleBout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A9BB76250EDDE20021502C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +161,23 @@
 			path = TestSceneController;
 			sourceTree = "<group>";
 		};
+		A25ADE6A25527AE100416022 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A25ADE7425527D9200416022 /* Match.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A25ADE7325527D7200416022 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A25ADE6B25527B5700416022 /* MatchController.swift */,
+				A26F436A2552817C00DB1DE5 /* PlayerInterfaceController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		A2A9BB6A250EDDE20021502C = {
 			isa = PBXGroup;
 			children = (
@@ -173,9 +202,11 @@
 			isa = PBXGroup;
 			children = (
 				A2A9BB76250EDDE20021502C /* AppDelegate.swift */,
+				A25ADE7325527D7200416022 /* Controllers */,
 				A2A9BBAC250FD7410021502C /* Scenes */,
 				A2A9BBAB250FD72E0021502C /* SceneControllers */,
-				A2A9BBAF250FD7770021502C /* UI Structures */,
+				A2A9BBAF250FD7770021502C /* UI Models */,
+				A25ADE6A25527AE100416022 /* Model */,
 				8EB879B3252808A20079CE3C /* Extensions */,
 				A2A9BBB0250FD80E0021502C /* Constants */,
 				A2A9BBAD250FD74A0021502C /* Animations */,
@@ -251,11 +282,12 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		A2A9BBAF250FD7770021502C /* UI Structures */ = {
+		A2A9BBAF250FD7770021502C /* UI Models */ = {
 			isa = PBXGroup;
 			children = (
+				A25ADE7D25527DF800416022 /* PlayerUIStruct.swift */,
 			);
-			path = "UI Structures";
+			path = "UI Models";
 			sourceTree = "<group>";
 		};
 		A2A9BBB0250FD80E0021502C /* Constants */ = {
@@ -408,12 +440,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20E98F225312A7500B96F63 /* NBNotifications.swift in Sources */,
+				A25ADE7E25527DF800416022 /* PlayerUIStruct.swift in Sources */,
+				A26F436B2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */,
 				8EB879B0252296480079CE3C /* CharacterStrings.swift in Sources */,
 				8EB879B5252808E60079CE3C /* Ex+String.swift in Sources */,
 				A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */,
 				8EB879B72530EAC50079CE3C /* Ex+SKNode.swift in Sources */,
+				A25ADE6C25527B5700416022 /* MatchController.swift in Sources */,
 				8EB879B22527F9240079CE3C /* UIStrings.swift in Sources */,
 				A2411891252A6F27003DCE59 /* TestLogic.swift in Sources */,
+				A25ADE7525527D9200416022 /* Match.swift in Sources */,
 				A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */,
 				A2B8283B253401B600735B94 /* TestUIEndingScreen.swift in Sources */,
 				8EB7021B25101B3500CC0EB6 /* Utilities.swift in Sources */,
@@ -428,6 +464,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2A9BB92250EDDE50021502C /* NobleBoutTests.swift in Sources */,
+				A25ADE7F25527DF800416022 /* PlayerUIStruct.swift in Sources */,
+				A25ADE7625527D9200416022 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,8 +474,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2411892252A6F27003DCE59 /* TestLogic.swift in Sources */,
+				A25ADE8025527DF800416022 /* PlayerUIStruct.swift in Sources */,
 				A241188325290EBE003DCE59 /* TestMatchSceneController.swift in Sources */,
 				A2A9BB9D250EDDE50021502C /* NobleBoutUITests.swift in Sources */,
+				A26F436C2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
