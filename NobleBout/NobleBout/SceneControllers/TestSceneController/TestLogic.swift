@@ -310,6 +310,7 @@ class Match {
                     self.statusLabel.text = "\(win)"
                 }
 
+                // TODO: Wait for timer animation
                 if let shouldContinue = shouldContinue {
                     if !shouldContinue {
                         

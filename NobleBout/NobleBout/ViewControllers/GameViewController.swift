@@ -11,19 +11,20 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    var scene: SKScene?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = TitleSceneController(fileNamed: "TitleScene") {// SKScene(fileNamed: "TestSelectScene") {
+            scene = TitleSceneController(fileNamed: "TitleScene") // SKScene(fileNamed: "TestSelectScene") {
                 // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
+            scene?.scaleMode = .aspectFill
                 
                 // Present the scene
                 view.presentScene(scene)
-            }
             
             //view.ignoresSiblingOrder = true
             
@@ -33,6 +34,10 @@ class GameViewController: UIViewController {
     }
     
 
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        scene?.motionEnded(motion, with: event)
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

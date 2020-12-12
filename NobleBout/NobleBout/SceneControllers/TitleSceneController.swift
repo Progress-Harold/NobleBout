@@ -32,19 +32,22 @@ class TitleSceneController: SKScene {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var debugModeOn = false
+        // TODO: - Setup start menu
+//        for touch in touches {
+//            let location = touch.location(in: self)
+//        }
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        let debugModeOn = true
         
-        for touch in touches {
-            let location = touch.location(in: self)
+        if motion == .motionShake {
+            guard let scene = debugModeOn ? TestMatchSceneController(fileNamed: testSceneStr): SelectScreenController(fileNamed: selectScreenStr)  else {
+                return
+            }
             
-            debugModeOn = debugModeBtn.contains(location)
+            scene.scaleMode = .aspectFill
+            self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
         }
-        
-        guard let scene = debugModeOn ? TestMatchSceneController(fileNamed: testSceneStr): SelectScreenController(fileNamed: selectScreenStr)  else {
-            return
-        }
-        
-        scene.scaleMode = .aspectFill
-        self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
     }
 }
