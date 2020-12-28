@@ -193,7 +193,7 @@ class Bout {
             if (playerOne.HP > 0) && (playerTwo.HP > 0) {
                 play(.paper,.rock){_ in }
             }
-            else  {
+            else {
                 end()
             }
         }
@@ -310,21 +310,23 @@ class Match {
                     self.statusLabel.text = "\(win)"
                 }
 
+                print("option")
                 // TODO: Wait for timer animation
                 if let shouldContinue = shouldContinue {
                     if !shouldContinue {
-                        
-                        self.presentWinner()
-                        
-                        if self.matchEnded {
-                            self.statusLabel.text = gameOverStr
-                            self.sk.updateUI()
-                            print("\(debugWinsStr)\(self.sk.pOScore.0)")
-                            print("\(debugWinsStr)\(self.sk.pTScore.0)")
-                        }
-                        else {
-                            print("\(debugWinsStr)\(self.sk.pOScore.0)")
-                            print("\(debugWinsStr)\(self.sk.pTScore.0)")
+                        timerOperation.notify(queue: .main) {
+                            self.presentWinner()
+                            
+                            if self.matchEnded {
+                                self.statusLabel.text = gameOverStr
+                                self.sk.updateUI()
+                                print("\(debugWinsStr)\(self.sk.pOScore.0)")
+                                print("\(debugWinsStr)\(self.sk.pTScore.0)")
+                            }
+                            else {
+                                print("\(debugWinsStr)\(self.sk.pOScore.0)")
+                                print("\(debugWinsStr)\(self.sk.pTScore.0)")
+                            }
                         }
                     }
                 }
