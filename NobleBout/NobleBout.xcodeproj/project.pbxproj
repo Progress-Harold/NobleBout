@@ -64,7 +64,7 @@
 
 /* Begin PBXFileReference section */
 		8E0C9A9C2510007900EA3C78 /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
-		8E0C9A9E251000EA00EA3C78 /* TitleSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TitleSceneController.swift; path = NobleBout/SceneControllers/TitleSceneController.swift; sourceTree = SOURCE_ROOT; };
+		8E0C9A9E251000EA00EA3C78 /* TitleSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TitleSceneController.swift; path = NobleBout/TitleScene/TitleSceneController.swift; sourceTree = SOURCE_ROOT; };
 		8E0C9AA22510120300EA3C78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EB7021A25101B3500CC0EB6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		8EB879AD251EC1E50079CE3C /* SelectScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectScreenController.swift; sourceTree = "<group>"; };
@@ -161,6 +161,15 @@
 			path = TestSceneController;
 			sourceTree = "<group>";
 		};
+		A258DAD3259A8AAF00A6204F /* CharecterSelectScene */ = {
+			isa = PBXGroup;
+			children = (
+				8ED437C725141086002B6786 /* SelectScreen.sks */,
+				8EB879AD251EC1E50079CE3C /* SelectScreenController.swift */,
+			);
+			path = CharecterSelectScene;
+			sourceTree = "<group>";
+		};
 		A25ADE6A25527AE100416022 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +214,8 @@
 				A25ADE7325527D7200416022 /* Controllers */,
 				A2A9BBAC250FD7410021502C /* Scenes */,
 				A2A9BBAB250FD72E0021502C /* SceneControllers */,
+				A2D4B9D8259A7A9000C48945 /* TitleScene */,
+				A258DAD3259A8AAF00A6204F /* CharecterSelectScene */,
 				A2A9BBAF250FD7770021502C /* UI Models */,
 				A25ADE6A25527AE100416022 /* Model */,
 				8EB879B3252808A20079CE3C /* Extensions */,
@@ -250,8 +261,6 @@
 		A2A9BBAB250FD72E0021502C /* SceneControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8E0C9A9E251000EA00EA3C78 /* TitleSceneController.swift */,
-				8EB879AD251EC1E50079CE3C /* SelectScreenController.swift */,
 				A241188025290E77003DCE59 /* TestSceneController */,
 			);
 			path = SceneControllers;
@@ -260,8 +269,6 @@
 		A2A9BBAC250FD7410021502C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				8E0C9A9C2510007900EA3C78 /* TitleScene.sks */,
-				8ED437C725141086002B6786 /* SelectScreen.sks */,
 				A241187F25290E51003DCE59 /* TestScene */,
 			);
 			path = Scenes;
@@ -298,6 +305,15 @@
 				A20E98F125312A7500B96F63 /* NBNotifications.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		A2D4B9D8259A7A9000C48945 /* TitleScene */ = {
+			isa = PBXGroup;
+			children = (
+				8E0C9A9C2510007900EA3C78 /* TitleScene.sks */,
+				8E0C9A9E251000EA00EA3C78 /* TitleSceneController.swift */,
+			);
+			path = TitleScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
