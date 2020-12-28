@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+var timerOperation: DispatchGroup = DispatchGroup()
+
 class TestMatchSceneController: SKScene, TestButtonDelegate {
     
     // MARK: - Test Constance
@@ -128,8 +130,6 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
                        sprite.contains(location) {
                         sprite.touchesEnded(touches, with: event)
                     }
-
-                    
                     
                     if !match.matchEnded || !bufferActive {
                         if let sprite = v as? STBtn,
@@ -176,6 +176,8 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
             restart()
         }
         
+        
+        
         if !match.matchEnded, choiceWasMade {
             NotificationCenter.default.post(name: choiceMadeN, object: nil)
         }
@@ -194,8 +196,10 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     @objc func animateTimer() {
         choiceWasMade = false
         timerActive = true
+
         
         if timerShouldRun {
+            timerOperation.enter()
             visualTimerSpr.run(.moveTo(x: 0, duration: 4)) {
                 
                 if !self.choiceWasMade && !self.match.matchEnded {
@@ -203,6 +207,8 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
                     self.didTap(.paper)
                 }
                 
+                
+                timerOperation.leave()
                 self.visualTimerSpr.position.x = -480
                 // wait for animation
                 self.timerActive = false
