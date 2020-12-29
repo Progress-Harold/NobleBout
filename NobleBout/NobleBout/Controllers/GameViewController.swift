@@ -14,37 +14,47 @@ public protocol GameViewDelegate {
     func present(scene: SKScene)
 }
 
-class GameViewController: UIViewController {
+public protocol ViewControllerDelegate {
+    func viewDidLoad()
+    func setup()
+    func present()
+}
+
+public class GameViewController: UIViewController, GameViewDelegate {
     
     var director: Director?
     var currentScene: SKScene?
+    
+    var delegate: ViewControllerDelegate?
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
         director?.presentTake()
+        delegate?.viewDidLoad()
     }
     
     func setup() {
         director = Director()
         director?.gameViewDelegate = self
+        delegate?.setup()
     }
 
-    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+    public override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         currentScene?.motionEnded(motion, with: event)
     }
     
-    override var prefersStatusBarHidden: Bool {
+    public override var prefersStatusBarHidden: Bool {
         return true
     }
-}
 
 // MARK: - GameViewDelegate
 
-extension GameViewController: GameViewDelegate {
-    func present(scene: SKScene) {
-        guard let view = self.view as! SKView? else { return }
+    public func present(scene: SKScene) {
+        guard let view = self.view as? SKView else { return }
+        
+        delegate?.present()
         
         scene.scaleMode = .aspectFit
         currentScene = scene
