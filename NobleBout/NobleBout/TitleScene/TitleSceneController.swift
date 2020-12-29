@@ -33,9 +33,9 @@ class TitleSceneController: SceneController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // TODO: - Setup start menu
-//        for touch in touches {
-//            let location = touch.location(in: self)
-//        }
+        for touch in touches {
+            let location = touch.location(in: self)
+        }
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
