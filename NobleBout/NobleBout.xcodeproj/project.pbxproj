@@ -25,6 +25,10 @@
 		A241188325290EBE003DCE59 /* TestMatchSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A241188125290EBE003DCE59 /* TestMatchSceneController.swift */; };
 		A2411891252A6F27003DCE59 /* TestLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2411890252A6F27003DCE59 /* TestLogic.swift */; };
 		A2411892252A6F27003DCE59 /* TestLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2411890252A6F27003DCE59 /* TestLogic.swift */; };
+		A258DAE8259A935B00A6204F /* Director.swift in Sources */ = {isa = PBXBuildFile; fileRef = A258DAE7259A935B00A6204F /* Director.swift */; };
+		A258DAED259A982600A6204F /* AssistantDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A258DAEC259A982500A6204F /* AssistantDirector.swift */; };
+		A258DAF4259A9A8700A6204F /* SceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A258DAF3259A9A8700A6204F /* SceneController.swift */; };
+		A258DAFA259AA1BF00A6204F /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A258DAF9259AA1BF00A6204F /* Stage.swift */; };
 		A25ADE6C25527B5700416022 /* MatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ADE6B25527B5700416022 /* MatchController.swift */; };
 		A25ADE7525527D9200416022 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ADE7425527D9200416022 /* Match.swift */; };
 		A25ADE7625527D9200416022 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25ADE7425527D9200416022 /* Match.swift */; };
@@ -43,6 +47,7 @@
 		A2A9BB92250EDDE50021502C /* NobleBoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB91250EDDE50021502C /* NobleBoutTests.swift */; };
 		A2A9BB9D250EDDE50021502C /* NobleBoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB9C250EDDE50021502C /* NobleBoutUITests.swift */; };
 		A2B8283B253401B600735B94 /* TestUIEndingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B8283A253401B600735B94 /* TestUIEndingScreen.swift */; };
+		A2BAE24F259AB01100007EC9 /* EX+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BAE24E259AB01100007EC9 /* EX+View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +83,10 @@
 		A241187925290627003DCE59 /* TestMatchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestMatchScene.sks; sourceTree = "<group>"; };
 		A241188125290EBE003DCE59 /* TestMatchSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatchSceneController.swift; sourceTree = "<group>"; };
 		A2411890252A6F27003DCE59 /* TestLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogic.swift; sourceTree = "<group>"; };
+		A258DAE7259A935B00A6204F /* Director.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Director.swift; sourceTree = "<group>"; };
+		A258DAEC259A982500A6204F /* AssistantDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDirector.swift; sourceTree = "<group>"; };
+		A258DAF3259A9A8700A6204F /* SceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneController.swift; sourceTree = "<group>"; };
+		A258DAF9259AA1BF00A6204F /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		A25ADE6B25527B5700416022 /* MatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchController.swift; sourceTree = "<group>"; };
 		A25ADE7425527D9200416022 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		A25ADE7D25527DF800416022 /* PlayerUIStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUIStruct.swift; sourceTree = "<group>"; };
@@ -97,6 +106,7 @@
 		A2A9BB9C250EDDE50021502C /* NobleBoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobleBoutUITests.swift; sourceTree = "<group>"; };
 		A2A9BB9E250EDDE50021502C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2B8283A253401B600735B94 /* TestUIEndingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIEndingScreen.swift; sourceTree = "<group>"; };
+		A2BAE24E259AB01100007EC9 /* EX+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EX+View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +148,7 @@
 			children = (
 				8EB879B4252808E60079CE3C /* Ex+String.swift */,
 				8EB879B62530EAC50079CE3C /* Ex+SKNode.swift */,
+				A2BAE24E259AB01100007EC9 /* EX+View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -168,6 +179,41 @@
 				8EB879AD251EC1E50079CE3C /* SelectScreenController.swift */,
 			);
 			path = CharecterSelectScene;
+			sourceTree = "<group>";
+		};
+		A258DAE6259A92EB00A6204F /* HighStaff */ = {
+			isa = PBXGroup;
+			children = (
+				A258DAE7259A935B00A6204F /* Director.swift */,
+				A258DAEC259A982500A6204F /* AssistantDirector.swift */,
+			);
+			path = HighStaff;
+			sourceTree = "<group>";
+		};
+		A258DAF1259A99BB00A6204F /* Production */ = {
+			isa = PBXGroup;
+			children = (
+				A258DAF8259AA03200A6204F /* Script */,
+				A258DAF2259A9A0700A6204F /* Stage */,
+				A258DAE6259A92EB00A6204F /* HighStaff */,
+			);
+			path = Production;
+			sourceTree = "<group>";
+		};
+		A258DAF2259A9A0700A6204F /* Stage */ = {
+			isa = PBXGroup;
+			children = (
+				A258DAF9259AA1BF00A6204F /* Stage.swift */,
+				A258DAF3259A9A8700A6204F /* SceneController.swift */,
+			);
+			path = Stage;
+			sourceTree = "<group>";
+		};
+		A258DAF8259AA03200A6204F /* Script */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Script;
 			sourceTree = "<group>";
 		};
 		A25ADE6A25527AE100416022 /* Model */ = {
@@ -210,7 +256,7 @@
 		A2A9BB75250EDDE20021502C /* NobleBout */ = {
 			isa = PBXGroup;
 			children = (
-				A2A9BB76250EDDE20021502C /* AppDelegate.swift */,
+				A258DAF1259A99BB00A6204F /* Production */,
 				A25ADE7325527D7200416022 /* Controllers */,
 				A2A9BBAC250FD7410021502C /* Scenes */,
 				A2A9BBAB250FD72E0021502C /* SceneControllers */,
@@ -249,6 +295,7 @@
 		A2A9BBAA250FD70F0021502C /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				A2A9BB76250EDDE20021502C /* AppDelegate.swift */,
 				A2A9BB80250EDDE20021502C /* Main.storyboard */,
 				A2A9BB83250EDDE50021502C /* Assets.xcassets */,
 				A2A9BB85250EDDE50021502C /* LaunchScreen.storyboard */,
@@ -379,7 +426,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = EightFoldGames;
 				TargetAttributes = {
 					A2A9BB72250EDDE20021502C = {
@@ -458,14 +505,19 @@
 				A20E98F225312A7500B96F63 /* NBNotifications.swift in Sources */,
 				A25ADE7E25527DF800416022 /* PlayerUIStruct.swift in Sources */,
 				A26F436B2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */,
+				A258DAFA259AA1BF00A6204F /* Stage.swift in Sources */,
 				8EB879B0252296480079CE3C /* CharacterStrings.swift in Sources */,
 				8EB879B5252808E60079CE3C /* Ex+String.swift in Sources */,
 				A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */,
 				8EB879B72530EAC50079CE3C /* Ex+SKNode.swift in Sources */,
+				A258DAED259A982600A6204F /* AssistantDirector.swift in Sources */,
+				A258DAE8259A935B00A6204F /* Director.swift in Sources */,
 				A25ADE6C25527B5700416022 /* MatchController.swift in Sources */,
+				A258DAF4259A9A8700A6204F /* SceneController.swift in Sources */,
 				8EB879B22527F9240079CE3C /* UIStrings.swift in Sources */,
 				A2411891252A6F27003DCE59 /* TestLogic.swift in Sources */,
 				A25ADE7525527D9200416022 /* Match.swift in Sources */,
+				A2BAE24F259AB01100007EC9 /* EX+View.swift in Sources */,
 				A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */,
 				A2B8283B253401B600735B94 /* TestUIEndingScreen.swift in Sources */,
 				8EB7021B25101B3500CC0EB6 /* Utilities.swift in Sources */,
@@ -558,6 +610,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -618,6 +671,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

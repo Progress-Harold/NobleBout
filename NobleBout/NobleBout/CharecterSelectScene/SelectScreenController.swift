@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class SelectScreenController: SKScene {
+class SelectScreenController: SceneController {
     
     var charArray: [SKSpriteNode] = []
     // UI Properties
