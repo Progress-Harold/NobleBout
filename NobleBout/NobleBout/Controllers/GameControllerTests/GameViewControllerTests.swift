@@ -51,7 +51,7 @@ class GameViewControllerTests: XCTestCase {
     }
 }
 
-// Mark: - ViewControllerDelegateMock
+// MARK: - ViewControllerDelegateMock
 
 class ViewControllerDelegateMock: ViewControllerDelegate {
     
@@ -74,7 +74,7 @@ class ViewControllerDelegateMock: ViewControllerDelegate {
     }
 }
 
-// Mark: - GameViewControllerMock
+// MARK: - GameViewControllerMock
 
 class GameViewControllerMock: GameViewController {
     
