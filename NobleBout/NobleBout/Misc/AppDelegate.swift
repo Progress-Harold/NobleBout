@@ -8,6 +8,8 @@
 
 import UIKit
 
+var debugModeOn = true
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

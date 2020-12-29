@@ -39,7 +39,6 @@ class TitleSceneController: SceneController {
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        let debugModeOn = true
         
         if motion == .motionShake {
             guard let scene = debugModeOn ? TestMatchSceneController(fileNamed: testSceneStr): SelectScreenController(fileNamed: selectScreenStr)  else {
