@@ -10,35 +10,46 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+public protocol GameViewDelegate {
+    func present(scene: SKScene)
+}
+
 class GameViewController: UIViewController {
     
-    var scene: SKScene?
+    var director: Director?
+    var currentScene: SKScene?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            scene = TitleSceneController(fileNamed: "TitleScene") // SKScene(fileNamed: "TestSelectScene") {
-                // Set the scale mode to scale to fit the window
-            scene?.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            
-            //view.ignoresSiblingOrder = true
-            
-            //view.showsFPS = true
-            //view.showsNodeCount = true
-        }
+
+        setup()
+        director?.presentTake()
     }
     
+    func setup() {
+        director = Director()
+        director?.gameViewDelegate = self
+    }
 
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        scene?.motionEnded(motion, with: event)
+        currentScene?.motionEnded(motion, with: event)
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
 }
+
+// MARK: - GameViewDelegate
+
+extension GameViewController: GameViewDelegate {
+    func present(scene: SKScene) {
+        guard let view = self.view as! SKView? else { return }
+        
+        scene.scaleMode = .aspectFit
+        currentScene = scene
+        
+        view.presentScene(scene)
+    }
+}
+

@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class TitleSceneController: SKScene {
+class TitleSceneController: SceneController {
     
     var titleEmmiter: SKEmitterNode = SKEmitterNode()
     
