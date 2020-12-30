@@ -8,8 +8,17 @@
 
 import SpriteKit
 
-public protocol AssistantDirectorDelegate {}
+public protocol AssistantDirectorDelegate {
+    var director: DirectorDelegate? { get set }
+    func setStage(_ wardrobeDict: [String: Any])
+}
 
-public class AssistantDirector {
+class AssistantDirector: AssistantDirectorDelegate {
     var director: DirectorDelegate?
+    
+    init(_ dict: [String: Any]) { setStage(dict) }
+    
+    func setStage(_ wardrobeDict: [String: Any]) {
+        print("WARNING: Your not doing anything in your `setStage(_ wardrobeDict:...`")
+    }
 }

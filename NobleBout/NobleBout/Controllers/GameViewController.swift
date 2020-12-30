@@ -55,8 +55,8 @@ public class GameViewController: UIViewController, GameViewDelegate {
         guard let view = self.view as? SKView else { return }
         
         delegate?.present()
-        
-        scene.scaleMode = .aspectFit
+        scene.size = CGSize(width: 1536, height: 2048)
+        scene.scaleMode = .aspectFill
         currentScene = scene
         
         view.presentScene(scene)

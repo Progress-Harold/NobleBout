@@ -44,3 +44,11 @@ let drinkStr = "Drink"
 let statusLblStr = "status"
 let player1Lble = "Player1Lble"
 let player2Lble = "Player2Lble"
+
+enum ParticalFromScene {
+    static let title = "TitleParticles"
+}
+
+enum Partical {
+    static let flames = "Flames"
+}
