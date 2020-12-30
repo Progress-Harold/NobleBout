@@ -10,6 +10,7 @@ import SpriteKit
 
 @objc protocol SceneControllerDelegate {
     // MARK: - Touches
+    @objc optional func sceneDidLoad()
     @objc optional func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     @objc optional func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
 }
