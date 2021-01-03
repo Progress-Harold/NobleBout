@@ -44,6 +44,12 @@
 		A2B7A47E259C3597000B35F1 /* TitleSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7A47D259C3597000B35F1 /* TitleSet.swift */; };
 		A2B7A489259C3E2C000B35F1 /* TitleAssistantDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7A488259C3E2C000B35F1 /* TitleAssistantDirector.swift */; };
 		A2B7A48F259C4C34000B35F1 /* TitleScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7A48E259C4C34000B35F1 /* TitleScreenTests.swift */; };
+		A2B7A4A1259D47CF000B35F1 /* BoutScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2B7A4A0259D47CF000B35F1 /* BoutScene.sks */; };
+		A2B7A4BB25A0FECE000B35F1 /* BoutSceneCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7A4BA25A0FECE000B35F1 /* BoutSceneCotroller.swift */; };
+		A2B7A4C125A102C9000B35F1 /* BoutAssistantDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7A4C025A102C9000B35F1 /* BoutAssistantDirector.swift */; };
+		A2B7A4C925A10B64000B35F1 /* BoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7A4C825A10B64000B35F1 /* BoutSet.swift */; };
+		A2B7A4CF25A12EFE000B35F1 /* HPDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7A4CE25A12EFE000B35F1 /* HPDisplay.swift */; };
+		A2B7A4DC25A13D6F000B35F1 /* EX+SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7A4DB25A13D6F000B35F1 /* EX+SKLabel.swift */; };
 		A2B8283B253401B600735B94 /* TestUIEndingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B8283A253401B600735B94 /* TestUIEndingScreen.swift */; };
 		A2BAE24F259AB01100007EC9 /* EX+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BAE24E259AB01100007EC9 /* EX+View.swift */; };
 		A2BAE263259AE11600007EC9 /* GameViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BAE262259AE11600007EC9 /* GameViewControllerTests.swift */; };
@@ -106,6 +112,12 @@
 		A2B7A47D259C3597000B35F1 /* TitleSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSet.swift; sourceTree = "<group>"; };
 		A2B7A488259C3E2C000B35F1 /* TitleAssistantDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAssistantDirector.swift; sourceTree = "<group>"; };
 		A2B7A48E259C4C34000B35F1 /* TitleScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenTests.swift; sourceTree = "<group>"; };
+		A2B7A4A0259D47CF000B35F1 /* BoutScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BoutScene.sks; sourceTree = "<group>"; };
+		A2B7A4BA25A0FECE000B35F1 /* BoutSceneCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoutSceneCotroller.swift; sourceTree = "<group>"; };
+		A2B7A4C025A102C9000B35F1 /* BoutAssistantDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoutAssistantDirector.swift; sourceTree = "<group>"; };
+		A2B7A4C825A10B64000B35F1 /* BoutSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoutSet.swift; sourceTree = "<group>"; };
+		A2B7A4CE25A12EFE000B35F1 /* HPDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDisplay.swift; sourceTree = "<group>"; };
+		A2B7A4DB25A13D6F000B35F1 /* EX+SKLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EX+SKLabel.swift"; sourceTree = "<group>"; };
 		A2B8283A253401B600735B94 /* TestUIEndingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIEndingScreen.swift; sourceTree = "<group>"; };
 		A2BAE24E259AB01100007EC9 /* EX+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EX+View.swift"; sourceTree = "<group>"; };
 		A2BAE262259AE11600007EC9 /* GameViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewControllerTests.swift; sourceTree = "<group>"; };
@@ -151,6 +163,7 @@
 				8EB879B4252808E60079CE3C /* Ex+String.swift */,
 				8EB879B62530EAC50079CE3C /* Ex+SKNode.swift */,
 				A2BAE24E259AB01100007EC9 /* EX+View.swift */,
+				A2B7A4DB25A13D6F000B35F1 /* EX+SKLabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -256,6 +269,7 @@
 				A2A9BBAC250FD7410021502C /* Scenes */,
 				A2D4B9D8259A7A9000C48945 /* TitleScene */,
 				A258DAD3259A8AAF00A6204F /* CharecterSelectScene */,
+				A2B7A49F259D47A2000B35F1 /* BoutScene */,
 				A241188025290E77003DCE59 /* TestSceneController */,
 				A2A9BBAF250FD7770021502C /* UI Models */,
 				A25ADE6A25527AE100416022 /* Model */,
@@ -339,6 +353,50 @@
 				A2B7A48E259C4C34000B35F1 /* TitleScreenTests.swift */,
 			);
 			path = TitleScreenTests;
+			sourceTree = "<group>";
+		};
+		A2B7A49F259D47A2000B35F1 /* BoutScene */ = {
+			isa = PBXGroup;
+			children = (
+				A2B7A4A0259D47CF000B35F1 /* BoutScene.sks */,
+				A2B7A4BA25A0FECE000B35F1 /* BoutSceneCotroller.swift */,
+				A2B7A4BF25A10046000B35F1 /* BoutSet */,
+			);
+			path = BoutScene;
+			sourceTree = "<group>";
+		};
+		A2B7A4BF25A10046000B35F1 /* BoutSet */ = {
+			isa = PBXGroup;
+			children = (
+				A2B7A4C025A102C9000B35F1 /* BoutAssistantDirector.swift */,
+				A2B7A4C825A10B64000B35F1 /* BoutSet.swift */,
+				A2B7A4CD25A12ED6000B35F1 /* UserInterface */,
+			);
+			path = BoutSet;
+			sourceTree = "<group>";
+		};
+		A2B7A4CD25A12ED6000B35F1 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				A2B7A4E125A1406E000B35F1 /* Logic */,
+				A2B7A4E025A1404E000B35F1 /* Components */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		A2B7A4E025A1404E000B35F1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A2B7A4E125A1406E000B35F1 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				A2B7A4CE25A12EFE000B35F1 /* HPDisplay.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 		A2BAE261259AE0C400007EC9 /* GameControllerTests */ = {
@@ -480,6 +538,7 @@
 				A2A9BB84250EDDE50021502C /* Assets.xcassets in Resources */,
 				8E0C9AA42510120300EA3C78 /* Assets.xcassets in Resources */,
 				A282D5902544129300B78B9D /* TestSelectScene.sks in Resources */,
+				A2B7A4A1259D47CF000B35F1 /* BoutScene.sks in Resources */,
 				A2A9BB87250EDDE50021502C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,16 +568,20 @@
 			files = (
 				A20E98F225312A7500B96F63 /* NBNotifications.swift in Sources */,
 				A25ADE7E25527DF800416022 /* PlayerUIStruct.swift in Sources */,
+				A2B7A4C125A102C9000B35F1 /* BoutAssistantDirector.swift in Sources */,
 				A2B7A47E259C3597000B35F1 /* TitleSet.swift in Sources */,
+				A2B7A4CF25A12EFE000B35F1 /* HPDisplay.swift in Sources */,
 				A26F436B2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */,
 				A258DAFA259AA1BF00A6204F /* Stage.swift in Sources */,
 				8EB879B0252296480079CE3C /* CharacterStrings.swift in Sources */,
 				8EB879B5252808E60079CE3C /* Ex+String.swift in Sources */,
+				A2B7A4DC25A13D6F000B35F1 /* EX+SKLabel.swift in Sources */,
 				A2B7A489259C3E2C000B35F1 /* TitleAssistantDirector.swift in Sources */,
 				A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */,
 				8EB879B72530EAC50079CE3C /* Ex+SKNode.swift in Sources */,
 				A258DAED259A982600A6204F /* AssistantDirector.swift in Sources */,
 				A258DAE8259A935B00A6204F /* Director.swift in Sources */,
+				A2B7A4BB25A0FECE000B35F1 /* BoutSceneCotroller.swift in Sources */,
 				A25ADE6C25527B5700416022 /* MatchController.swift in Sources */,
 				A258DAF4259A9A8700A6204F /* SceneController.swift in Sources */,
 				8EB879B22527F9240079CE3C /* UIStrings.swift in Sources */,
@@ -531,6 +594,7 @@
 				8EB879AE251EC1E50079CE3C /* SelectScreenController.swift in Sources */,
 				A241188225290EBE003DCE59 /* TestMatchSceneController.swift in Sources */,
 				8E0C9A9F251000EA00EA3C78 /* TitleSceneController.swift in Sources */,
+				A2B7A4C925A10B64000B35F1 /* BoutSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,7 +703,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -694,7 +758,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -747,7 +811,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AJZ8YNH2N6;
 				INFOPLIST_FILE = NobleBout/Misc/UnitTestInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -768,7 +834,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AJZ8YNH2N6;
 				INFOPLIST_FILE = NobleBout/Misc/UnitTestInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (

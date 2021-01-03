@@ -6,7 +6,6 @@
 //  Copyright © 2020 EightFoldGames. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
 
 class TitleSceneController: SceneController {
