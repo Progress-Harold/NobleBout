@@ -30,11 +30,13 @@ let testSceneStr = "TestMatchScene"
 // Misc:
 let timerStr = "timer"
 
-// Buttons
-let rBtnStr = "rBtn"
-let pBtnStr = "pBtn"
-let sBtnStr = "sBtn"
+// Test Buttons
+let rBtnStr = "rBtn" // rock || punch
+let pBtnStr = "pBtn" // papper || ability
+let sBtnStr = "sBtn" // sciccors || kick
 let restartBtnStr = "restartBtn"
+
+
 
 let hDrinkStr = "hDrinkBtn"
 let eDrinkStr = "eDrinkBtn"

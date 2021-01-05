@@ -1,5 +1,5 @@
 //
-//  HPDisplay.swift
+//  PlayerInfoHUD.swift
 //  NobleBout
 //
 //  Created by Lee Davis on 1/2/21.

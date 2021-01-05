@@ -18,6 +18,8 @@ class BoutAssistantDirector: AssistantDirector {
 
 extension BoutAssistantDirector: SceneControllerDelegate {
     func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        boutSet?.playerInterface?.playerAvatarOne.run(.moveTo(x: (boutSet?.playerInterface?.playerAvatarOne.position.x)! + 100, duration: 1)) {
+            self.boutSet?.playerInterface?.playerAvatarOne.run(.moveTo(x: (self.boutSet?.playerInterface?.playerAvatarOne.position.x)! + -100, duration: 1))
+        }
     }
 }
