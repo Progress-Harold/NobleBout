@@ -8,15 +8,19 @@
 
 import SpriteKit
 
-public protocol SceneControllerDelegate {
-    var assistantDirector: AssistantDirector! { get }
-    var childMapDict: [String: Any] { get set }
+@objc protocol SceneControllerDelegate {
+    // MARK: - Touches
+    @objc optional func sceneDidLoad()
+    @objc optional func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    @objc optional func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
 }
 
-class SceneController: SKScene, SceneControllerDelegate {
-    var assistantDirector: AssistantDirector!
+class SceneController: SKScene {
+    var assistantDirector: AssistantDirector?
     
     var childMapDict: [String: Any] = [:]
+    
+    var sceneDelegate: SceneControllerDelegate?
     
     override func sceneDidLoad() {
         super.sceneDidLoad()
@@ -25,6 +29,26 @@ class SceneController: SKScene, SceneControllerDelegate {
             if let name = node.name {
                 childMapDict[name] = node
             }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        sceneDelegate?.touchesBegan?(touches, with: event)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        sceneDelegate?.touchesEnded?(touches, with: event)
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        
+        if motion == .motionShake {
+            guard let scene = debugModeOn ? TestMatchSceneController(fileNamed: testSceneStr): SelectScreenController(fileNamed: selectScreenStr)  else {
+                return
+            }
+            
+            scene.scaleMode = .aspectFill
+            self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))
         }
     }
 }

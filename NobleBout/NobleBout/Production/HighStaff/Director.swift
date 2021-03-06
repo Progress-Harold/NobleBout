@@ -9,7 +9,7 @@
 import SpriteKit
 
 public protocol DirectorDelegate {
-    var currentSet: StageSet? { get }
+    var currentSet: StageSet? { get set }
     
     func buildScript(completion: (_ scene: SKScene?)->())
     func presentTake()
@@ -31,7 +31,9 @@ final class Director: DirectorDelegate {
     }
     
     public func buildScript(completion: (_ scene: SKScene?)->()) {
-        completion(currentSet?.scene)
+        let scene = currentSet?.scene
+        scene?.assistantDirector?.director = self
+        completion(scene)
     }
     
     public func presentTake() {

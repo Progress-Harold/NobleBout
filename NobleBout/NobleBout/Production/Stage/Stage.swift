@@ -27,7 +27,9 @@ public enum StageSet {
             return TitleSceneController(fileNamed: titleScreenStr)
         case .selectionScreen:
             return SelectScreenController(fileNamed: selectScreenStr)
-        case .bout, .scoreboard, .store, .credits, .options:
+        case .bout:
+            return BoutSceneController(fileNamed: "BoutScene")
+        case .scoreboard, .store, .credits, .options:
             return nil
         }
     }

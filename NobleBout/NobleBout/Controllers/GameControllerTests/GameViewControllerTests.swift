@@ -13,8 +13,8 @@ import UIKit
 
 class GameViewControllerTests: XCTestCase {
     
-    var subjectUnderTest: GameViewControllerMock?
-    var viewController: ViewControllerDelegateMock?
+    private var subjectUnderTest: GameViewControllerMock?
+    private var viewController: ViewControllerDelegateMock?
     
     override func setUp() {
         super.setUp()
@@ -32,19 +32,19 @@ class GameViewControllerTests: XCTestCase {
         viewController = nil
     }
     
-    func test_viewDidLoad() {
+    private func test_viewDidLoad() {
         subjectUnderTest?.viewDidLoad()
         
         XCTAssertEqual(viewController?.invokedViewDidLoad, true)
     }
     
-    func test_setup() {
+    private func test_setup() {
         subjectUnderTest?.viewDidLoad()
         
         XCTAssertEqual(viewController?.invokedSetup, true)
     }
     
-    func test_presentScene() {
+    private func test_presentScene() {
         subjectUnderTest?.viewDidLoad()
         
         XCTAssertEqual(viewController?.invokedSetup, true)
@@ -53,7 +53,7 @@ class GameViewControllerTests: XCTestCase {
 
 // MARK: - ViewControllerDelegateMock
 
-class ViewControllerDelegateMock: ViewControllerDelegate {
+private final class ViewControllerDelegateMock: ViewControllerDelegate {
     
     var invokedViewDidLoad: Bool = false
     
@@ -76,7 +76,7 @@ class ViewControllerDelegateMock: ViewControllerDelegate {
 
 // MARK: - GameViewControllerMock
 
-class GameViewControllerMock: GameViewController {
+private final class GameViewControllerMock: GameViewController {
     
     var invokedPresentedScene: Bool = false
     
