@@ -17,7 +17,7 @@ let selectBtnStr: String = "selectBtn"
 let titleScreenStr = "TitleScene"
 let selectScreenStr = "SelectScreen"
 
-// MARK: - TestStrings
+// MARK: - Test Strings
 let debugModeStr = "debugMode"
 let debugWinsStr = "Wins:"
 let titleNavBtnStr = "backToTitle"
@@ -30,7 +30,7 @@ let testSceneStr = "TestMatchScene"
 // Misc:
 let timerStr = "timer"
 
-// Test Buttons
+// MARK: - Test Buttons
 let rBtnStr = "rBtn" // rock || punch
 let pBtnStr = "pBtn" // papper || ability
 let sBtnStr = "sBtn" // sciccors || kick

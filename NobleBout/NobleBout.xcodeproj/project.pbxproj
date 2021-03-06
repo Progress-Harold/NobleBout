@@ -38,6 +38,8 @@
 		A26F436C2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26F436A2552817C00DB1DE5 /* PlayerInterfaceController.swift */; };
 		A282D5902544129300B78B9D /* TestSelectScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A282D58F2544129300B78B9D /* TestSelectScene.sks */; };
 		A282D5912544129300B78B9D /* TestSelectScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A282D58F2544129300B78B9D /* TestSelectScene.sks */; };
+		A2A1BAD325AA666200BDF52A /* HUDAnimation.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2A1BAD225AA666200BDF52A /* HUDAnimation.sks */; };
+		A2A1BAD825AA68DE00BDF52A /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1BAD725AA68DE00BDF52A /* PlayerInfo.swift */; };
 		A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB76250EDDE20021502C /* AppDelegate.swift */; };
 		A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB7E250EDDE20021502C /* GameViewController.swift */; };
 		A2A9BB82250EDDE20021502C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A9BB80250EDDE20021502C /* Main.storyboard */; };
@@ -104,6 +106,8 @@
 		A25ADE7D25527DF800416022 /* PlayerUIStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUIStruct.swift; sourceTree = "<group>"; };
 		A26F436A2552817C00DB1DE5 /* PlayerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInterfaceController.swift; sourceTree = "<group>"; };
 		A282D58F2544129300B78B9D /* TestSelectScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSelectScene.sks; sourceTree = "<group>"; };
+		A2A1BAD225AA666200BDF52A /* HUDAnimation.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HUDAnimation.sks; sourceTree = "<group>"; };
+		A2A1BAD725AA68DE00BDF52A /* PlayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		A2A9BB73250EDDE20021502C /* NobleBout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NobleBout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A9BB76250EDDE20021502C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2A9BB7E250EDDE20021502C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +263,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		A2A1BAD125AA58FA00BDF52A /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				A2A1BAD725AA68DE00BDF52A /* PlayerInfo.swift */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
 		A2A9BB6A250EDDE20021502C = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +345,7 @@
 		A2A9BBAD250FD74A0021502C /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				A2A1BAD225AA666200BDF52A /* HUDAnimation.sks */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -406,6 +419,7 @@
 		A2B7A4E025A1404E000B35F1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A2A1BAD125AA58FA00BDF52A /* HUD */,
 				A20208EE25A23B3000ECADED /* Buttons */,
 			);
 			path = Components;
@@ -548,6 +562,7 @@
 				8E0C9A9D2510007900EA3C78 /* TitleScene.sks in Resources */,
 				A241187A25290627003DCE59 /* TestMatchScene.sks in Resources */,
 				A2A9BB84250EDDE50021502C /* Assets.xcassets in Resources */,
+				A2A1BAD325AA666200BDF52A /* HUDAnimation.sks in Resources */,
 				8E0C9AA42510120300EA3C78 /* Assets.xcassets in Resources */,
 				A282D5902544129300B78B9D /* TestSelectScene.sks in Resources */,
 				A2B7A4A1259D47CF000B35F1 /* BoutScene.sks in Resources */,
@@ -588,6 +603,7 @@
 				A26F436B2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */,
 				A258DAFA259AA1BF00A6204F /* Stage.swift in Sources */,
 				8EB879B0252296480079CE3C /* CharacterStrings.swift in Sources */,
+				A2A1BAD825AA68DE00BDF52A /* PlayerInfo.swift in Sources */,
 				8EB879B5252808E60079CE3C /* Ex+String.swift in Sources */,
 				A2B7A4DC25A13D6F000B35F1 /* EX+SKLabel.swift in Sources */,
 				A20208F625A23B7A00ECADED /* Interaction.swift in Sources */,

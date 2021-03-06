@@ -41,5 +41,14 @@ final class PlayerInfoHUD {
             hp2 -= 10
         }
     }
+    
+    func increaseHP(_ player: Player) {
+        switch player {
+        case .playerOne:
+            hp1 += 10
+        case .playerTwo:
+            hp2 += 10
+        }
+    }
 }
 

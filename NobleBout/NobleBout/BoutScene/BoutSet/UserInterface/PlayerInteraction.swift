@@ -10,6 +10,9 @@ import SpriteKit
 
 final class PlayerInteraction {
     // button dictionary
+    private var buttons: [Button]
     
-    init() {}
+    init(buttons: [Button]) {
+        self.buttons = buttons
+    }
 }
