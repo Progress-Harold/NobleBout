@@ -65,14 +65,14 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
         if ArcadeController.test_instance.heroWasChosen,
            let nextOpponent = ArcadeController.test_instance.opponent  {
             opponent = nextOpponent
-            match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeper(pow, ptw))
+            match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeperTest(pow, ptw))
         }
         else {
             ArcadeController.test_instance.selectCharacter(.masa)
             guard let nextOpponent = ArcadeController.test_instance.opponent else { return }
             
             opponent = nextOpponent
-            match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeper(pow, ptw))
+            match = Match(p1: Player(ArcadeController.test_instance.chosenHero!), p2: Player(opponent), sk: ScoreKeeperTest(pow, ptw))
         }
 
         self.setupUI()

@@ -114,38 +114,6 @@ enum Hero: String {
 }
 
 
-class Player {
-    var HP: Int = 10
-    var TP: Int = 60
-    
-    private let hero: Hero
-    private var passiveAbilities: [Buff] = []
-    
-    init(_ hero: Hero) {
-        self.hero = hero
-        self.passiveAbilities = hero.natruralBuffs
-    }
-    
-    func refresh() {
-        self.HP = 10
-        self.TP = 60
-    }
-    
-    private var spirite: Int = 0
-    
-    func spiritOrbs() -> Int {
-        var total = spirite
-        var spiritOrbNum: Int = 0
-        
-        while total > 0 || !((total - 20) < 0) || spiritOrbNum < 4 {
-            total -= total - 20
-            spiritOrbNum += 1
-        }
-        
-        return spiritOrbNum
-    }
-}
-
 // MARK: - Match Flow Logic
 
 /// JankenRound
@@ -247,7 +215,7 @@ class Bout {
 
 /// Match
 class Match {
-    var sk: ScoreKeeper
+    var sk: ScoreKeeperTest
     
     var p1Choice: Choice?
     var p2Choice: Choice?
@@ -257,7 +225,7 @@ class Match {
     
     var currentBout: Bout
     
-    init(p1: Player, p2: Player, sk: ScoreKeeper) {
+    init(p1: Player, p2: Player, sk: ScoreKeeperTest) {
         currentBout = Bout(p1, p2)
         self.sk = sk
     }
@@ -376,7 +344,7 @@ class Match {
 }
 
 
-class ScoreKeeper {
+class ScoreKeeperTest {
     typealias Score = (Int, SKLabelNode)
     
     var pOScore: Score

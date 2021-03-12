@@ -15,7 +15,6 @@ protocol ButtonDelegate {
 final class Button: SKSpriteNode {
     
     var btnType: Interaction = .rock
-    
     var delegate: ButtonDelegate?
     
     func setType() {

@@ -9,24 +9,23 @@
 import SpriteKit
 
 class PlayerInfo {
-    enum PlayerType {
+    enum PlayerType: String {
         case p1
         case p2
     }
     
-    let type: PlayerType
     var playerIcon: SKSpriteNode?
     var playerHealthbar: SKSpriteNode?
+    var playerHP: SKLabelNode?
+    let type: PlayerType
     
-    init(type: PlayerType, infoNode: SKShapeNode) {
+    init(type: PlayerType, infoNode: SKNode) {
         self.type = type
         
-//        configure(node: infoNode)
+        configure(node: infoNode)
     }
     
     func configure(node: SKNode) {
-        node.children.forEach { (node) in
-            
-        }
+        playerHP = node.childNode(withName: type.rawValue) as? SKLabelNode
     }
 }

@@ -22,6 +22,8 @@
 		A20208FE25A23BE300ECADED /* PlayerInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20208FD25A23BE300ECADED /* PlayerInteraction.swift */; };
 		A208DD1E2525B6580029D5C7 /* Flames.sks in Resources */ = {isa = PBXBuildFile; fileRef = A208DD1D2525B6580029D5C7 /* Flames.sks */; };
 		A20E98F225312A7500B96F63 /* NBNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20E98F125312A7500B96F63 /* NBNotifications.swift */; };
+		A239828225F595640041BF06 /* ScoreKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239828125F595640041BF06 /* ScoreKeeper.swift */; };
+		A239828725F597EE0041BF06 /* EX+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239828625F597EE0041BF06 /* EX+Int.swift */; };
 		A241187A25290627003DCE59 /* TestMatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A241187925290627003DCE59 /* TestMatchScene.sks */; };
 		A241187B25290627003DCE59 /* TestMatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A241187925290627003DCE59 /* TestMatchScene.sks */; };
 		A241188225290EBE003DCE59 /* TestMatchSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A241188125290EBE003DCE59 /* TestMatchSceneController.swift */; };
@@ -38,6 +40,9 @@
 		A26F436C2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26F436A2552817C00DB1DE5 /* PlayerInterfaceController.swift */; };
 		A282D5902544129300B78B9D /* TestSelectScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A282D58F2544129300B78B9D /* TestSelectScene.sks */; };
 		A282D5912544129300B78B9D /* TestSelectScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A282D58F2544129300B78B9D /* TestSelectScene.sks */; };
+		A29EEC8025F5776000FB9770 /* Moderator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29EEC7F25F5776000FB9770 /* Moderator.swift */; };
+		A29EEC8625F581E200FB9770 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29EEC8525F581E200FB9770 /* Player.swift */; };
+		A29EEC8B25F58A8D00FB9770 /* RuleBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29EEC8A25F58A8D00FB9770 /* RuleBook.swift */; };
 		A2A1BAD325AA666200BDF52A /* HUDAnimation.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2A1BAD225AA666200BDF52A /* HUDAnimation.sks */; };
 		A2A1BAD825AA68DE00BDF52A /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1BAD725AA68DE00BDF52A /* PlayerInfo.swift */; };
 		A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A9BB76250EDDE20021502C /* AppDelegate.swift */; };
@@ -94,6 +99,8 @@
 		A20208FD25A23BE300ECADED /* PlayerInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInteraction.swift; sourceTree = "<group>"; };
 		A208DD1D2525B6580029D5C7 /* Flames.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Flames.sks; sourceTree = "<group>"; };
 		A20E98F125312A7500B96F63 /* NBNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBNotifications.swift; sourceTree = "<group>"; };
+		A239828125F595640041BF06 /* ScoreKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreKeeper.swift; sourceTree = "<group>"; };
+		A239828625F597EE0041BF06 /* EX+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EX+Int.swift"; sourceTree = "<group>"; };
 		A241187925290627003DCE59 /* TestMatchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestMatchScene.sks; sourceTree = "<group>"; };
 		A241188125290EBE003DCE59 /* TestMatchSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatchSceneController.swift; sourceTree = "<group>"; };
 		A2411890252A6F27003DCE59 /* TestLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogic.swift; sourceTree = "<group>"; };
@@ -106,6 +113,9 @@
 		A25ADE7D25527DF800416022 /* PlayerUIStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUIStruct.swift; sourceTree = "<group>"; };
 		A26F436A2552817C00DB1DE5 /* PlayerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInterfaceController.swift; sourceTree = "<group>"; };
 		A282D58F2544129300B78B9D /* TestSelectScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSelectScene.sks; sourceTree = "<group>"; };
+		A29EEC7F25F5776000FB9770 /* Moderator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moderator.swift; sourceTree = "<group>"; };
+		A29EEC8525F581E200FB9770 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		A29EEC8A25F58A8D00FB9770 /* RuleBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleBook.swift; sourceTree = "<group>"; };
 		A2A1BAD225AA666200BDF52A /* HUDAnimation.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HUDAnimation.sks; sourceTree = "<group>"; };
 		A2A1BAD725AA68DE00BDF52A /* PlayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		A2A9BB73250EDDE20021502C /* NobleBout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NobleBout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +186,7 @@
 				8EB879B62530EAC50079CE3C /* Ex+SKNode.swift */,
 				A2BAE24E259AB01100007EC9 /* EX+View.swift */,
 				A2B7A4DB25A13D6F000B35F1 /* EX+SKLabel.swift */,
+				A239828625F597EE0041BF06 /* EX+Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -231,6 +242,7 @@
 			children = (
 				A258DAF2259A9A0700A6204F /* Stage */,
 				A258DAE6259A92EB00A6204F /* HighStaff */,
+				A29EEC8425F581CE00FB9770 /* Logic */,
 			);
 			path = Production;
 			sourceTree = "<group>";
@@ -261,6 +273,17 @@
 				A2BAE261259AE0C400007EC9 /* GameControllerTests */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A29EEC8425F581CE00FB9770 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				A29EEC7F25F5776000FB9770 /* Moderator.swift */,
+				A29EEC8525F581E200FB9770 /* Player.swift */,
+				A29EEC8A25F58A8D00FB9770 /* RuleBook.swift */,
+				A239828125F595640041BF06 /* ScoreKeeper.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 		A2A1BAD125AA58FA00BDF52A /* HUD */ = {
@@ -599,6 +622,8 @@
 				A2B7A47E259C3597000B35F1 /* TitleSet.swift in Sources */,
 				A2B7A4EF25A1466A000B35F1 /* PlayerInterface.swift in Sources */,
 				A20208EA25A23AFA00ECADED /* Button.swift in Sources */,
+				A29EEC8025F5776000FB9770 /* Moderator.swift in Sources */,
+				A29EEC8B25F58A8D00FB9770 /* RuleBook.swift in Sources */,
 				A2B7A4CF25A12EFE000B35F1 /* PlayerInfoHUD.swift in Sources */,
 				A26F436B2552817C00DB1DE5 /* PlayerInterfaceController.swift in Sources */,
 				A258DAFA259AA1BF00A6204F /* Stage.swift in Sources */,
@@ -608,6 +633,8 @@
 				A2B7A4DC25A13D6F000B35F1 /* EX+SKLabel.swift in Sources */,
 				A20208F625A23B7A00ECADED /* Interaction.swift in Sources */,
 				A2B7A489259C3E2C000B35F1 /* TitleAssistantDirector.swift in Sources */,
+				A239828725F597EE0041BF06 /* EX+Int.swift in Sources */,
+				A29EEC8625F581E200FB9770 /* Player.swift in Sources */,
 				A2A9BB7F250EDDE20021502C /* GameViewController.swift in Sources */,
 				8EB879B72530EAC50079CE3C /* Ex+SKNode.swift in Sources */,
 				A258DAED259A982600A6204F /* AssistantDirector.swift in Sources */,
@@ -616,6 +643,7 @@
 				A2B7A4BB25A0FECE000B35F1 /* BoutSceneCotroller.swift in Sources */,
 				A25ADE6C25527B5700416022 /* MatchController.swift in Sources */,
 				A258DAF4259A9A8700A6204F /* SceneController.swift in Sources */,
+				A239828225F595640041BF06 /* ScoreKeeper.swift in Sources */,
 				8EB879B22527F9240079CE3C /* UIStrings.swift in Sources */,
 				A2411891252A6F27003DCE59 /* TestLogic.swift in Sources */,
 				A25ADE7525527D9200416022 /* Match.swift in Sources */,

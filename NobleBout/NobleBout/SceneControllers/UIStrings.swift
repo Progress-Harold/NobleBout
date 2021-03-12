@@ -31,11 +31,12 @@ let testSceneStr = "TestMatchScene"
 let timerStr = "timer"
 
 // MARK: - Test Buttons
-let rBtnStr = "rBtn" // rock || punch
-let pBtnStr = "pBtn" // papper || ability
-let sBtnStr = "sBtn" // sciccors || kick
+let rBtnStr = "punch" // rock || punch
+let pBtnStr = "ability" // papper || ability
+let sBtnStr = "kick" // sciccors || kick
 let restartBtnStr = "restartBtn"
 
+let buttonStrs = ["punch","kick", "ability", "block"]
 
 
 let hDrinkStr = "hDrinkBtn"
