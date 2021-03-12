@@ -12,6 +12,8 @@ import SpriteKit
 final class BoutSet {
     var playerInfo: PlayerInfoHUD?
     var playerInterface: PlayerInterface?
+    var playerInteraction: PlayerInteraction?
+    let scoreKeeper = ScoreKeeper()
     
     init(_ dict: [String: Any]) {
         guard let labelOne = dict["hp1"] as? SKLabelNode,
@@ -22,8 +24,22 @@ final class BoutSet {
             print("No good, could not find some assets in scene.")
             return
         }
-        
+                
         playerInfo = PlayerInfoHUD(labelOne, labelTwo)
         playerInterface = PlayerInterface(avaterOne, avaterTwo)
+        
+        let buttons = dict.filter { key, value -> Bool in
+            return buttonStrs.contains(key)
+        }.compactMap { _, value -> Button? in
+            return value as? Button
+        }
+        
+        playerInteraction = .init(buttons: buttons)
+        
+        configure()
+    }
+    
+    func configure() {
+        scoreKeeper.delegateUI = playerInfo
     }
 }

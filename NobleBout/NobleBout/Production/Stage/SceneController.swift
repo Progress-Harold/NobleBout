@@ -12,7 +12,7 @@ import SpriteKit
     // MARK: - Touches
     @objc optional func sceneDidLoad()
     @objc optional func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
-    @objc optional func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+    @objc optional func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?, scene: SKScene)
 }
 
 class SceneController: SKScene {
@@ -37,7 +37,7 @@ class SceneController: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        sceneDelegate?.touchesEnded?(touches, with: event)
+        sceneDelegate?.touchesEnded?(touches, with: event, scene: self)
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {

@@ -11,7 +11,7 @@ import SpriteKit
 final class PlayerInfoHUD {
     
     // MARK: - Private Variables
-    
+    // add player info objects
     private var hpLabel1: SKLabelNode?
     private var hp1: Int = 100 {
         didSet {
@@ -49,6 +49,25 @@ final class PlayerInfoHUD {
         case .playerTwo:
             hp2 += 10
         }
+    }
+}
+
+extension PlayerInfoHUD: ScoreKeeperUIDelegate {
+    func bout(winner: RuleBook.Winner) {
+        switch winner {
+        
+        case .pOne:
+            decreaseHP(.playerTwo)
+        case .pTwo:
+            decreaseHP(.playerOne)
+        case .draw:
+            return
+        }
+    }
+    
+    func updateRoundScore(p1: Int, p2: Int) {
+        decreaseHP(.playerOne)
+        print("test")
     }
 }
 

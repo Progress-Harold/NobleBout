@@ -20,7 +20,7 @@ final class TitleAssistantDirector: AssistantDirector {
 // MARK: - Touches
 
 extension TitleAssistantDirector: SceneControllerDelegate {
-    func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?, scene: SKScene) {
         director?.currentSet = .bout
         director?.presentTake()
     }
