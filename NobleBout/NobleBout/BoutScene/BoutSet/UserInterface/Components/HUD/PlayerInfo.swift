@@ -17,15 +17,23 @@ class PlayerInfo {
     var playerIcon: SKSpriteNode?
     var playerHealthbar: SKSpriteNode?
     var playerHP: SKLabelNode?
+    var windPointEmitteron: SKEmitterNode?
+    var windPointEmitter: SKEmitterNode?
     let type: PlayerType
     
     init(type: PlayerType, infoNode: SKNode) {
         self.type = type
         
         configure(node: infoNode)
+        style()
     }
     
     func configure(node: SKNode) {
-        playerHP = node.childNode(withName: type.rawValue) as? SKLabelNode
+        playerHealthbar = node.childNode(withName: UserInterface.healthBar) as? SKSpriteNode
+        playerHP = node.childNode(withName: "hp") as? SKLabelNode
+    }
+    
+    func style() {
+        playerHealthbar?.texture = Textures.healthBar
     }
 }

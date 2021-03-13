@@ -10,25 +10,35 @@ import SpriteKit
 
 final class PlayerInfoHUD {
     
-    // MARK: - Private Variables
-    // add player info objects
-    private var hpLabel1: SKLabelNode?
+    private var animationInProgress: Bool = false
+    
+    private var playerOneInfo: PlayerInfo
     private var hp1: Int = 100 {
         didSet {
-            hpLabel1?.updateHPLabel(hp1)
-        }
-    }
-    private var hpLabel2: SKLabelNode?
-    private var hp2: Int = 100 {
-        didSet {
-            hpLabel2?.updateHPLabel(hp2)
+            playerOneInfo.playerHP?.updateHPLabel(hp1)
+            
+            animationInProgress = true
+            playerOneInfo.playerHealthbar?.run(SKAction.getAction(by: SpriteActionsName.reduceHealth + "\(hp1)")) {
+                self.animationInProgress = false
+            }
         }
     }
     
-    init(_ hpLabel1: SKLabelNode,
-         _ hpLabel2: SKLabelNode) {
-        self.hpLabel1 = hpLabel1
-        self.hpLabel2 = hpLabel2
+    private var playerTwoInfo: PlayerInfo
+    private var hp2: Int = 100 {
+        didSet {
+            playerTwoInfo.playerHP?.updateHPLabel(hp2)
+            
+            animationInProgress = true
+            playerTwoInfo.playerHealthbar?.run(SKAction.getAction(by: SpriteActionsName.reduceHealth + "\(hp2)")) {
+                self.animationInProgress = false
+            }
+        }
+    }
+    
+    init(_ playerOneInfo: SKNode, _ playerTwoInfo: SKNode) {
+        self.playerOneInfo = PlayerInfo(type: .p1, infoNode: playerOneInfo)
+        self.playerTwoInfo = PlayerInfo(type: .p1, infoNode: playerTwoInfo)
     }
     
     enum Player { case playerOne, playerTwo }
@@ -43,11 +53,16 @@ final class PlayerInfoHUD {
     }
     
     func increaseHP(_ player: Player) {
-        switch player {
-        case .playerOne:
-            hp1 += 10
-        case .playerTwo:
-            hp2 += 10
+        if animationInProgress == false {
+            switch player {
+            case .playerOne:
+                hp1 += 10
+            case .playerTwo:
+                hp2 += 10
+            }
+        }
+        else {
+            print("animation is in progress")
         }
     }
 }
