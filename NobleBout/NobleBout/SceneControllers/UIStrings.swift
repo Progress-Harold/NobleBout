@@ -6,7 +6,7 @@
 //  Copyright © 2020 EightFoldGames. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 // MARK: -
 
@@ -48,10 +48,29 @@ let statusLblStr = "status"
 let player1Lble = "Player1Lble"
 let player2Lble = "Player2Lble"
 
+enum Labels {
+    static let hp = "hp"
+    static let name = "name"
+}
+
+
+enum UserInterface {
+    static let healthBar = "healthBar"
+}
+
+enum SpriteActionsName {
+//    static let reduceHealth90 = SKAction.getAction(by: "reduceTo")
+    static let reduceHealth = "reduceTo"
+}
+
 enum ParticalFromScene {
     static let title = "TitleParticles"
 }
 
 enum Partical {
     static let flames = "Flames"
+}
+
+enum Textures {
+    static let healthBar = SKTexture(imageNamed: "HealthBar")
 }

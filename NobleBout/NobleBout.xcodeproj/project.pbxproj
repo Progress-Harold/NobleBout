@@ -24,6 +24,8 @@
 		A20E98F225312A7500B96F63 /* NBNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20E98F125312A7500B96F63 /* NBNotifications.swift */; };
 		A239828225F595640041BF06 /* ScoreKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239828125F595640041BF06 /* ScoreKeeper.swift */; };
 		A239828725F597EE0041BF06 /* EX+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239828625F597EE0041BF06 /* EX+Int.swift */; };
+		A239829225FD3B9A0041BF06 /* winSpark.sks in Resources */ = {isa = PBXBuildFile; fileRef = A239829125FD3B9A0041BF06 /* winSpark.sks */; };
+		A239829725FD43C40041BF06 /* Ex+SKAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239829625FD43C40041BF06 /* Ex+SKAction.swift */; };
 		A241187A25290627003DCE59 /* TestMatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A241187925290627003DCE59 /* TestMatchScene.sks */; };
 		A241187B25290627003DCE59 /* TestMatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A241187925290627003DCE59 /* TestMatchScene.sks */; };
 		A241188225290EBE003DCE59 /* TestMatchSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A241188125290EBE003DCE59 /* TestMatchSceneController.swift */; };
@@ -101,6 +103,8 @@
 		A20E98F125312A7500B96F63 /* NBNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBNotifications.swift; sourceTree = "<group>"; };
 		A239828125F595640041BF06 /* ScoreKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreKeeper.swift; sourceTree = "<group>"; };
 		A239828625F597EE0041BF06 /* EX+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EX+Int.swift"; sourceTree = "<group>"; };
+		A239829125FD3B9A0041BF06 /* winSpark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = winSpark.sks; sourceTree = "<group>"; };
+		A239829625FD43C40041BF06 /* Ex+SKAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+SKAction.swift"; sourceTree = "<group>"; };
 		A241187925290627003DCE59 /* TestMatchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestMatchScene.sks; sourceTree = "<group>"; };
 		A241188125290EBE003DCE59 /* TestMatchSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatchSceneController.swift; sourceTree = "<group>"; };
 		A2411890252A6F27003DCE59 /* TestLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogic.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 			children = (
 				A208DD1D2525B6580029D5C7 /* Flames.sks */,
 				8E0C9AA22510120300EA3C78 /* Assets.xcassets */,
+				A239829125FD3B9A0041BF06 /* winSpark.sks */,
 			);
 			path = Effects;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				A2BAE24E259AB01100007EC9 /* EX+View.swift */,
 				A2B7A4DB25A13D6F000B35F1 /* EX+SKLabel.swift */,
 				A239828625F597EE0041BF06 /* EX+Int.swift */,
+				A239829625FD43C40041BF06 /* Ex+SKAction.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -585,6 +591,7 @@
 				8E0C9A9D2510007900EA3C78 /* TitleScene.sks in Resources */,
 				A241187A25290627003DCE59 /* TestMatchScene.sks in Resources */,
 				A2A9BB84250EDDE50021502C /* Assets.xcassets in Resources */,
+				A239829225FD3B9A0041BF06 /* winSpark.sks in Resources */,
 				A2A1BAD325AA666200BDF52A /* HUDAnimation.sks in Resources */,
 				8E0C9AA42510120300EA3C78 /* Assets.xcassets in Resources */,
 				A282D5902544129300B78B9D /* TestSelectScene.sks in Resources */,
@@ -640,6 +647,7 @@
 				A258DAED259A982600A6204F /* AssistantDirector.swift in Sources */,
 				A258DAE8259A935B00A6204F /* Director.swift in Sources */,
 				A20208FE25A23BE300ECADED /* PlayerInteraction.swift in Sources */,
+				A239829725FD43C40041BF06 /* Ex+SKAction.swift in Sources */,
 				A2B7A4BB25A0FECE000B35F1 /* BoutSceneCotroller.swift in Sources */,
 				A25ADE6C25527B5700416022 /* MatchController.swift in Sources */,
 				A258DAF4259A9A8700A6204F /* SceneController.swift in Sources */,
@@ -832,6 +840,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AJZ8YNH2N6;
 				INFOPLIST_FILE = NobleBout/Misc/Info.plist;
@@ -840,8 +849,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = EightFoldGames.NobleBout;
+				PRODUCT_BUNDLE_IDENTIFIER = NobleBout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -851,6 +861,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AJZ8YNH2N6;
 				INFOPLIST_FILE = NobleBout/Misc/Info.plist;
@@ -859,8 +870,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = EightFoldGames.NobleBout;
+				PRODUCT_BUNDLE_IDENTIFIER = NobleBout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
