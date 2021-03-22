@@ -17,14 +17,16 @@ final class BoutSet {
     
     init(_ dict: [String: Any]) {
         guard let playerOneInfo = dict["playerOneInfo"] as? SKNode,
-              let playerTwoInfo = dict["playerTwoInfo"] as? SKNode
+              let playerTwoInfo = dict["playerTwoInfo"] as? SKNode,
+              let avatarOne = dict["p1"] as? SKSpriteNode,
+              let avatarTwo = dict["p2"] as? SKSpriteNode
         else {
             print("No good, could not find some assets in scene.")
             return
         }
                 
         playerInfo = PlayerInfoHUD(playerOneInfo, playerTwoInfo)
-//        playerInterface = PlayerInterface(avaterOne, avaterTwo)
+        playerInterface = PlayerInterface(avatarOne, avatarTwo)
         
         let buttons = dict.filter { key, value -> Bool in
             return buttonStrs.contains(key)

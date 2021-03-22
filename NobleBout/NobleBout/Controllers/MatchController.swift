@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class MatchController {
+final class MatchController {
     private var playerOneUI: PlayerUIStruct
     private var playerTwoUI: PlayerUIStruct
     

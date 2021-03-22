@@ -18,7 +18,7 @@ protocol PlayerInterfaceControllerDelegate {
     func guardInput()
 }
 
-class PlayerInterfaceController: PlayerInterfaceControllerDelegate {
+final class PlayerInterfaceController: PlayerInterfaceControllerDelegate {
     
     /*
      - R, G, B, Y Buttons

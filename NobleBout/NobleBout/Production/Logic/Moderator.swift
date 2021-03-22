@@ -20,14 +20,14 @@ final class Moderator {
         delegate?.didDetermineBout(winner: ruleBook.compare(combo: (choice1, choice2)))
     }
 }
-
-extension Moderator: ScoreKeeperUIDelegate  {
-    func bout(winner: RuleBook.Winner) {
-        
-    }
-    
-    func updateRoundScore(p1: Int, p2: Int) {
-        delegate?.updateRoundScore(p1: p1, p2: p2)
-    }
-}
+//
+//extension Moderator: ScoreKeeperUIDelegate  {
+//    func bout(winner: RuleBook.Winner) {
+//        
+//    }
+//    
+//    func updateRoundScore(p1: Int, p2: Int) {
+//        delegate?.updateRoundScore(p1: p1, p2: p2)
+//    }
+//}
 

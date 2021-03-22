@@ -75,6 +75,7 @@ extension PlayerInfoHUD: ScoreKeeperUIDelegate {
             decreaseHP(.playerTwo)
         case .pTwo:
             decreaseHP(.playerOne)
+            
         case .draw:
             return
         }

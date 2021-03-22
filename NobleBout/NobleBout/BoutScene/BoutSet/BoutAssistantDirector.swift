@@ -61,6 +61,10 @@ extension BoutAssistantDirector: ModeratorDelegate {
     }
     
     func didDetermineBout(winner: RuleBook.Winner) {
-        boutSet?.scoreKeeper.bout(winner: winner)
+        let player: PlayerInterface.Player = winner == .pOne ? .p1 : .p2
+        boutSet?.playerInterface?.animate(player: player, with: .p) { [weak self] in
+            guard let myself = self else { return }
+            myself.boutSet?.scoreKeeper.bout(winner: winner)
+        }
     }
 }
