@@ -61,6 +61,17 @@ enum UserInterface {
 enum SpriteActionsName {
 //    static let reduceHealth90 = SKAction.getAction(by: "reduceTo")
     static let reduceHealth = "reduceTo"
+    
+    
+    enum masa {
+        static let mPunch = "mPunch"
+        static let mIdle = "mIdle"
+    }
+    
+    enum tetsu {
+        static let mPunch = "tPunch"
+        static let mIdle = "tIdle"
+    }
 }
 
 enum ParticalFromScene {

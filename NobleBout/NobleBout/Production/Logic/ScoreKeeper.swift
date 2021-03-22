@@ -21,9 +21,7 @@ final class ScoreKeeper {
     
     var delegate: ScoreKeeperDelegate?
     var delegateUI: ScoreKeeperUIDelegate?
-    
-    init() {}
-    
+        
     func bout(winner: RuleBook.Winner) {
         delegateUI?.bout(winner: winner)
     }
