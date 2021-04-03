@@ -148,9 +148,7 @@ class TestMatchSceneController: SKScene, TestButtonDelegate {
     // MARK: - UI Methods
     
     func navBackToTitle() {
-        guard let scene = TitleSceneController(fileNamed: titleScreenStr)  else {
-            return
-        }
+        guard let scene = TitleSceneController(fileNamed: titleScreenStr)  else { return }
         
         scene.scaleMode = .aspectFill
         self.view?.presentScene(scene, transition: SKTransition.fade(withDuration: 0.4))

@@ -17,8 +17,8 @@ class PlayerInfo {
     var playerIcon: SKSpriteNode?
     var playerHealthbar: SKSpriteNode?
     var playerHP: SKLabelNode?
-    var windPointEmitteron: SKEmitterNode?
-    var windPointEmitter: SKEmitterNode?
+    var winPointEmitterOne: SKNode?
+    var winPointEmitterTwo: SKNode?
     let type: PlayerType
     
     init(type: PlayerType, infoNode: SKNode) {
@@ -28,12 +28,21 @@ class PlayerInfo {
         style()
     }
     
-    func configure(node: SKNode) {
+    private func configure(node: SKNode) {
         playerHealthbar = node.childNode(withName: UserInterface.healthBar) as? SKSpriteNode
         playerHP = node.childNode(withName: "hp") as? SKLabelNode
+        
+        winPointEmitterOne = node.childNode(withName: "point1")
+//        winPointEmitterOne?.isHidden = true
+        
+        winPointEmitterTwo = node.childNode(withName: "point2")
+//        winPointEmitterTwo?.isHidden = true
     }
     
-    func style() {
+    private func style() {
         playerHealthbar?.texture = Textures.healthBar
+        
+        winPointEmitterOne?.addChild(SKEmitterNode().summonEmitter(with: "winSpark"))
+        winPointEmitterTwo?.addChild(SKEmitterNode().summonEmitter(with: "winSpark"))
     }
 }

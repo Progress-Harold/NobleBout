@@ -20,7 +20,7 @@ public protocol ViewControllerDelegate {
     func present()
 }
 
-public class GameViewController: UIViewController, GameViewDelegate {
+public class GameViewController: UIViewController {
     
     var director: Director?
     var currentScene: SKScene?
@@ -31,7 +31,7 @@ public class GameViewController: UIViewController, GameViewDelegate {
         super.viewDidLoad()
 
         setup()
-        director?.presentTake()
+        director?.presentTake(nil)
         delegate?.viewDidLoad()
     }
     
@@ -49,8 +49,11 @@ public class GameViewController: UIViewController, GameViewDelegate {
         return true
     }
 
+}
+
 // MARK: - GameViewDelegate
 
+extension GameViewController: GameViewDelegate {
     public func present(scene: SKScene) {
         guard let view = self.view as? SKView else { return }
         

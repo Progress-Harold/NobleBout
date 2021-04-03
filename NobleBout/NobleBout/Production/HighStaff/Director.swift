@@ -12,7 +12,7 @@ public protocol DirectorDelegate {
     var currentSet: StageSet? { get set }
     
     func buildScript(completion: (_ scene: SKScene?)->())
-    func presentTake()
+    func presentTake(_ withSet: StageSet?)
     // func - move to a given scene
     // func - move to prev scene
     // func - move to next scene
@@ -29,17 +29,26 @@ final class Director: DirectorDelegate {
     init() {
         currentSet = Stage.order.first
     }
-    
+    // 1
     public func buildScript(completion: (_ scene: SKScene?)->()) {
         let scene = currentSet?.scene
         scene?.assistantDirector?.director = self
         completion(scene)
     }
-    
-    public func presentTake() {
-        buildScript { scene in
-            guard let scene = scene else { return }
+    // 2
+    public func presentTake(_ withSet: StageSet?) {
+        if let set = withSet {
+            currentSet = set
+            
+            guard let scene = currentSet?.scene else { return }
+            scene.assistantDirector?.director = self
             gameViewDelegate?.present(scene: scene)
+        }
+        else {
+            buildScript { scene in
+                guard let scene = scene else { return }
+                gameViewDelegate?.present(scene: scene)
+            }
         }
     }
 }

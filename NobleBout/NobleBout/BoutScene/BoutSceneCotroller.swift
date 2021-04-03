@@ -8,11 +8,23 @@
 
 import SpriteKit
 
-class BoutSceneController: SceneController {
+final class BoutSceneController: SceneController {
     override func sceneDidLoad() {
         super.sceneDidLoad()
         
         assistantDirector = BoutAssistantDirector(childMapDict)
+        (assistantDirector as? BoutAssistantDirector)?.delegate = self
+        
         sceneDelegate = assistantDirector as? SceneControllerDelegate
+    }
+}
+
+extension BoutSceneController: BoutAssistantDirectorDelegate {
+    func pauseAndEnterMenue() {
+        pause() // TODO: - Added a start menu
+    }
+    
+    func returnToMenu() {
+        assistantDirector?.director?.presentTake(.title)
     }
 }

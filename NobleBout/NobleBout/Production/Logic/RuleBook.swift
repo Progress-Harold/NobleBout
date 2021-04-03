@@ -17,6 +17,7 @@ struct RuleBook {
     
     typealias JankenCombo = (Choice, Choice)
     private let choices: [Choice] = [.paper, .rock, .scissor]
+    private let maxPoints: Int = 2
     
     private let resultsDict: [String: Winner] = {
         return [
@@ -37,5 +38,9 @@ struct RuleBook {
     
     func compare(combo: JankenCombo) -> Winner {
         return resultsDict["\(combo.0)V\(combo.1)"] ?? .draw
+    }
+    
+    func reachedMax(points: Int) -> Bool {
+        return points == maxPoints
     }
 }

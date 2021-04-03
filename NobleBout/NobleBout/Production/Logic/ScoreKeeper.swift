@@ -7,12 +7,15 @@
 //
 
 protocol ScoreKeeperDelegate {
+    func bout(winner: RuleBook.Winner)
     func matchPoint()
+    func updateRoundScore(p1: Int, p2: Int)
+    func reset()
 }
 
 protocol ScoreKeeperUIDelegate {
-    func updateRoundScore(p1: Int, p2: Int)
     func bout(winner: RuleBook.Winner)
+    func updateRoundScore(p1: Int, p2: Int)
 }
 
 final class ScoreKeeper {
@@ -38,6 +41,7 @@ final class ScoreKeeper {
         
         if (p1Score.isMatchPoint() == true) || (p2Score.isMatchPoint() == true) {
             reset()
+            delegate?.reset()
             delegate?.matchPoint()
         }
         else {

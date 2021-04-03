@@ -8,26 +8,44 @@
 
 import SpriteKit
 
-class BoutAssistantDirector: AssistantDirector {
+protocol BoutAssistantDirectorDelegate: AnyObject {
+    func pauseAndEnterMenue()
+    func returnToMenu()
+}
+
+final class BoutAssistantDirector: AssistantDirector {
+    var delegate: BoutAssistantDirectorDelegate?
     
     private var boutSet: BoutSet?
     private let moderator = Moderator()
+    private var isInteracting: Bool = false
     
     override func setStage(_ wardrobeDict: [String : Any]) {
         boutSet = BoutSet(wardrobeDict)
+        boutSet?.delegate = self
         boutSet?.playerInteraction?.delegate = self
         moderator.delegate = self
     }
+    
+    // start next round
+    // end round
+    // return to menu
+    // enter start menu
+    
 }
 
 extension BoutAssistantDirector: SceneControllerDelegate {
     func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?, scene: SKScene) {
-        for touch in touches {
-            let location = touch.location(in: scene)
+        if isInteracting == false {
+            isInteracting = true
             
-            boutSet?.playerInteraction?.buttons.forEach { button in
-                if button.contains(location) {
-                    button.touchesEnded(touches, with: event)
+            for touch in touches {
+                let location = touch.location(in: scene)
+                
+                boutSet?.playerInteraction?.buttons.forEach { button in
+                    if button.contains(location) {
+                        button.touchesEnded(touches, with: event)
+                    }
                 }
             }
         }
@@ -62,9 +80,17 @@ extension BoutAssistantDirector: ModeratorDelegate {
     
     func didDetermineBout(winner: RuleBook.Winner) {
         let player: PlayerInterface.Player = winner == .pOne ? .p1 : .p2
+        
         boutSet?.playerInterface?.animate(player: player, with: .p) { [weak self] in
             guard let myself = self else { return }
             myself.boutSet?.scoreKeeper.bout(winner: winner)
+            myself.isInteracting = false
         }
+    }
+}
+
+extension BoutAssistantDirector: BoutSetDelegate {
+    func returnToStartMenu() {
+        delegate?.returnToMenu()
     }
 }

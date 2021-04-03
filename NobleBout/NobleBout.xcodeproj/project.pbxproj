@@ -30,6 +30,7 @@
 		A241187B25290627003DCE59 /* TestMatchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A241187925290627003DCE59 /* TestMatchScene.sks */; };
 		A241188225290EBE003DCE59 /* TestMatchSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A241188125290EBE003DCE59 /* TestMatchSceneController.swift */; };
 		A2411891252A6F27003DCE59 /* TestLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2411890252A6F27003DCE59 /* TestLogic.swift */; };
+		A2521E882616EF8600DEAD58 /* Ex+Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2521E872616EF8600DEAD58 /* Ex+Emitter.swift */; };
 		A258DAE8259A935B00A6204F /* Director.swift in Sources */ = {isa = PBXBuildFile; fileRef = A258DAE7259A935B00A6204F /* Director.swift */; };
 		A258DAED259A982600A6204F /* AssistantDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A258DAEC259A982500A6204F /* AssistantDirector.swift */; };
 		A258DAF4259A9A8700A6204F /* SceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A258DAF3259A9A8700A6204F /* SceneController.swift */; };
@@ -110,6 +111,7 @@
 		A241187925290627003DCE59 /* TestMatchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestMatchScene.sks; sourceTree = "<group>"; };
 		A241188125290EBE003DCE59 /* TestMatchSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMatchSceneController.swift; sourceTree = "<group>"; };
 		A2411890252A6F27003DCE59 /* TestLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogic.swift; sourceTree = "<group>"; };
+		A2521E872616EF8600DEAD58 /* Ex+Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Emitter.swift"; sourceTree = "<group>"; };
 		A258DAE7259A935B00A6204F /* Director.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Director.swift; sourceTree = "<group>"; };
 		A258DAEC259A982500A6204F /* AssistantDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDirector.swift; sourceTree = "<group>"; };
 		A258DAF3259A9A8700A6204F /* SceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				A2B7A4DB25A13D6F000B35F1 /* EX+SKLabel.swift */,
 				A239828625F597EE0041BF06 /* EX+Int.swift */,
 				A239829625FD43C40041BF06 /* Ex+SKAction.swift */,
+				A2521E872616EF8600DEAD58 /* Ex+Emitter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				8EB879B22527F9240079CE3C /* UIStrings.swift in Sources */,
 				A2411891252A6F27003DCE59 /* TestLogic.swift in Sources */,
 				A25ADE7525527D9200416022 /* Match.swift in Sources */,
+				A2521E882616EF8600DEAD58 /* Ex+Emitter.swift in Sources */,
 				A2BAE24F259AB01100007EC9 /* EX+View.swift in Sources */,
 				A2A9BB77250EDDE20021502C /* AppDelegate.swift in Sources */,
 				A2B8283B253401B600735B94 /* TestUIEndingScreen.swift in Sources */,
@@ -852,7 +856,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AJZ8YNH2N6;
 				INFOPLIST_FILE = NobleBout/Misc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -861,7 +865,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -873,7 +877,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AJZ8YNH2N6;
 				INFOPLIST_FILE = NobleBout/Misc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -882,7 +886,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

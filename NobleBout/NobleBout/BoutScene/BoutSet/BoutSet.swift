@@ -8,11 +8,17 @@
 
 import SpriteKit
 
+protocol BoutSetDelegate {
+    func returnToStartMenu()
+}
 
 final class BoutSet {
+    var delegate: BoutSetDelegate?
+    
     var playerInfo: PlayerInfoHUD?
     var playerInterface: PlayerInterface?
     var playerInteraction: PlayerInteraction?
+    
     let scoreKeeper = ScoreKeeper()
     
     init(_ dict: [String: Any]) {
@@ -26,6 +32,7 @@ final class BoutSet {
         }
                 
         playerInfo = PlayerInfoHUD(playerOneInfo, playerTwoInfo)
+        playerInfo?.delegate = self
         playerInterface = PlayerInterface(avatarOne, avatarTwo)
         
         let buttons = dict.filter { key, value -> Bool in
@@ -41,5 +48,11 @@ final class BoutSet {
     
     func configure() {
         scoreKeeper.delegateUI = playerInfo
+    }
+}
+
+extension BoutSet: PlayerInfoHUDDelegate {
+    func roundEnd() {
+        delegate?.returnToStartMenu()
     }
 }
